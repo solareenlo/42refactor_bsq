@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 12:15:16 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 14:55:33 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define FT_BUFSIZ 320000
+# define FT_BUFSIZ 32768
 # define IN 1
 # define OUT 0
 # define SUCCESS 1
@@ -26,6 +26,9 @@
 # define FT_ERR_MAP "map error\n"
 # define TRUE 1
 # define FALSE 0
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
 
 typedef int		t_bool;
 
@@ -66,7 +69,7 @@ int				ft_atoi(char *str);
 int				ft_validate_5(char **map);
 t_info			*ft_prse(char **map);
 int				ft_validate(char **map, t_info *info);
-int				ft_validate_4(char *content);
+int				ft_is_last_char_a_line_break(char *content);
 void			set_tempcrs(t_tempcrs *p_tempcrs);
 int				ft_check_1(char **map, int col, int row, t_info *p_info);
 void			ft_make_map(char **map, t_info *p_info);

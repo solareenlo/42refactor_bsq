@@ -6,13 +6,13 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 11:25:50 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:04:31 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void	ft_free(char ***map)
+void		ft_free(char ***map)
 {
 	long int	i;
 
@@ -26,7 +26,7 @@ void	ft_free(char ***map)
 	*map = NULL;
 }
 
-char	*ft_read(int ifd)
+static char	*read_to_eof(int ifd)
 {
 	char	*content;
 	char	buf[FT_BUFSIZ + 1];
@@ -44,16 +44,16 @@ char	*ft_read(int ifd)
 	return (content);
 }
 
-int		ft_main_1(void)
+int			ft_main_1(void)
 {
 	char	*content;
 	char	**map;
 	t_info	*info;
 
-	content = ft_read(0);
-	if (ft_validate_4(content) == FAIL)
+	content = read_to_eof(STDIN);
+	if (ft_is_last_char_a_line_break(content) == FALSE)
 		return (FAIL);
-	map = ft_split(content, "\n");
+	map = ft_split(content, (char *)"\n");
 	free(content);
 	if (ft_validate_5(map) == FAIL)
 		return (FAIL);
@@ -67,7 +67,7 @@ int		ft_main_1(void)
 	return (SUCCESS);
 }
 
-int		ft_main_2(int argc, char *argv[], int i)
+int			ft_main_2(int argc, char *argv[], int i)
 {
 	int		ifd;
 	char	*content;
@@ -76,11 +76,11 @@ int		ft_main_2(int argc, char *argv[], int i)
 
 	if ((ifd = open(argv[i], O_RDONLY)) == -1)
 		return (FAIL);
-	content = ft_read(ifd);
-	if (ft_validate_4(content) == FAIL)
+	content = read_to_eof(ifd);
+	if (ft_is_last_char_a_line_break(content) == FALSE)
 		return (FAIL);
 	close(ifd);
-	map = ft_split(content, "\n");
+	map = ft_split(content, (char *)"\n");
 	free(content);
 	if (ft_validate_5(map) == FAIL)
 		return (FAIL);
@@ -90,20 +90,20 @@ int		ft_main_2(int argc, char *argv[], int i)
 		return (FAIL);
 	ft_make_map(map, info);
 	if (!(i + 1 == argc))
-		ft_putstr("\n");
+		ft_putstr((char *)"\n");
 	ft_free(&map);
 	free(info);
 	return (SUCCESS);
 }
 
-int		main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	int	i;
 
 	if (argc < 2)
 	{
 		if (ft_main_1() == FAIL)
-			ft_puterror(FT_ERR_MAP);
+			ft_puterror((char *)FT_ERR_MAP);
 	}
 	else
 	{
@@ -111,7 +111,7 @@ int		main(int argc, char *argv[])
 		while (++i < argc)
 		{
 			if (ft_main_2(argc, argv, i) == FAIL)
-				ft_puterror(FT_ERR_MAP);
+				ft_puterror((char *)FT_ERR_MAP);
 		}
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:46:10 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 12:39:12 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 14:20:25 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ char	*ft_strdup(char *src)
 	char	*copy;
 	int		i;
 
-	i = 0;
-	while (src[i])
-		i++;
+	i = ft_strlen(src);
 	copy = (char *)malloc(i + 1);
 	if (copy == NULL)
 		return (NULL);

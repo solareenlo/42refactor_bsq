@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 11:37:46 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:41:10 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_add_last_word(char **res, char *str, int i)
 
 	if (g_state == IN)
 	{
-		res[g_word_index] = malloc(sizeof(char) * ((i - g_start) + 1));
+		res[g_word_index] = (char *)malloc(sizeof(char) * ((i - g_start) + 1));
 		j = -1;
 		while (g_start <= i)
 			res[g_word_index][++j] = str[g_start++];
@@ -90,7 +90,7 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 	int		j;
 
-	res = malloc(sizeof(char *) * (ft_get_wc(str, charset) + 1));
+	res = (char **)malloc(sizeof(char *) * (ft_get_wc(str, charset) + 1));
 	i = -1;
 	while (str[++i])
 	{
@@ -99,7 +99,8 @@ char	**ft_split(char *str, char *charset)
 			if (g_state == OUT)
 				continue ;
 			g_state = OUT;
-			res[g_word_index] = malloc(sizeof(char) * ((g_end - g_start) + 1));
+			res[g_word_index] =
+				(char *)malloc(sizeof(char) * ((g_end - g_start) + 1));
 			j = -1;
 			while (g_start <= g_end)
 				res[g_word_index][++j] = str[g_start++];

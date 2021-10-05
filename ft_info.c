@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 11:30:56 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 14:20:55 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ t_info	*ft_prse(char **map)
 
 	line = map[0];
 	len = ft_strlen(line);
-	info = malloc(sizeof(t_info *));
-	num = malloc(sizeof(char) * (len - 3) + 1);
+	info = (t_info *)malloc(sizeof(t_info *));
+	num = (char *)malloc(sizeof(char) * (len - 3) + 1);
 	i = -1;
 	while (++i < len - 3)
 		num[i] = line[i];
