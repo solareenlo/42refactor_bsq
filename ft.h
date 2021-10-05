@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 17:00:36 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:43:02 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ typedef struct	s_bsq
 	int			size;
 }				t_bsq;
 
-typedef struct	s_info
+typedef struct	s_map_info
 {
-	int			num_rows;
+	int			number_of_rows;
 	char		empty;
 	char		obstacle;
 	char		full;
-}				t_info;
+}				t_map_info;
 
 typedef struct	s_tempcrs
 {
@@ -68,13 +68,13 @@ char			*ft_strdup(char *src);
 char			*ft_strjoin(char *s1, char *s2);
 char			**ft_split(char *str, char *charset);
 int				ft_atoi(char *str);
-int				ft_is_valid_map_info(char **map);
-t_info			*ft_prse(char **map);
-int				ft_validate(char **map, t_info *info);
+t_bool			ft_is_valid_map_info(char **map);
+t_map_info		*ft_parse_map_info(char **map);
+int				ft_validate(char **map, t_map_info *info);
 int				ft_is_last_char_a_line_break(char *content);
 void			set_tempcrs(t_tempcrs *p_tempcrs);
-int				ft_check_1(char **map, int col, int row, t_info *p_info);
-void			ft_make_map(char **map, t_info *p_info);
+int				ft_check_1(char **map, int col, int row, t_map_info *p_info);
+void			ft_make_map(char **map, t_map_info *p_info);
 void			set_bsq(t_bsq *p_bsq);
 int				ft_map_colsize(char **map);
 

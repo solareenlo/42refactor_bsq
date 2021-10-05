@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 11:32:07 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:44:15 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int	g_max;
 extern int	g_col;
 extern int	g_row;
 
-int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_info *p_info)
+int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 {
 	int	i;
 
@@ -43,7 +43,7 @@ int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_info *p_info)
 	return (1);
 }
 
-void		ft_check_3(char **map, t_tempcrs *p_tempcrs, t_info *p_info)
+void		ft_check_3(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 {
 	p_tempcrs->size = 0;
 	while (ft_check_2(map, p_tempcrs, p_info) == 1)
@@ -56,13 +56,13 @@ void		ft_check_3(char **map, t_tempcrs *p_tempcrs, t_info *p_info)
 	}
 }
 
-void		ft_put_map(char **map, t_info *p_info)
+void		ft_put_map(char **map, t_map_info *p_info)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (i <= p_info->num_rows)
+	while (i <= p_info->number_of_rows)
 	{
 		j = 0;
 		while (j < ft_map_colsize(map))
@@ -75,14 +75,14 @@ void		ft_put_map(char **map, t_info *p_info)
 	}
 }
 
-void		ft_change_map(char **map, t_info *p_info)
+void		ft_change_map(char **map, t_map_info *p_info)
 {
 	int		i;
 	int		j;
 	t_bsq	*p_bsq;
 
 	i = 0;
-	p_bsq = malloc(sizeof(t_bsq));
+	p_bsq = (t_bsq *)malloc(sizeof(t_bsq));
 	set_bsq(p_bsq);
 	while (i < g_max)
 	{
@@ -99,16 +99,16 @@ void		ft_change_map(char **map, t_info *p_info)
 	return ;
 }
 
-void		ft_make_map(char **map, t_info *p_info)
+void		ft_make_map(char **map, t_map_info *p_info)
 {
 	t_tempcrs	*p_tempcrs;
 
 	g_max = 0;
 	g_col = 0;
 	g_row = 0;
-	p_tempcrs = malloc(sizeof(t_tempcrs));
+	p_tempcrs = (t_tempcrs *)malloc(sizeof(t_tempcrs));
 	set_tempcrs(p_tempcrs);
-	while (p_tempcrs->row <= p_info->num_rows)
+	while (p_tempcrs->row <= p_info->number_of_rows)
 	{
 		p_tempcrs->col = 0;
 		while (p_tempcrs->col < ft_map_colsize(map))

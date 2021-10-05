@@ -6,13 +6,13 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 14:53:19 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:29:27 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int	ft_validate_1(char **map, t_info *info)
+int	ft_validate_1(char **map, t_map_info *info)
 {
 	if (!(map[0] && map[1]))
 		return (FAIL);
@@ -22,7 +22,7 @@ int	ft_validate_1(char **map, t_info *info)
 	return (SUCCESS);
 }
 
-int	ft_validate_2(char **map, t_info *info)
+int	ft_validate_2(char **map, t_map_info *info)
 {
 	int	i;
 	int	j;
@@ -40,7 +40,7 @@ int	ft_validate_2(char **map, t_info *info)
 	return (SUCCESS);
 }
 
-int	ft_validate_3(char **map, t_info *info)
+int	ft_validate_3(char **map, t_map_info *info)
 {
 	int	i;
 	int	len;
@@ -53,7 +53,7 @@ int	ft_validate_3(char **map, t_info *info)
 			return (FAIL);
 		i++;
 	}
-	if (i - 1 != info->num_rows)
+	if (i - 1 != info->number_of_rows)
 		return (FAIL);
 	return (SUCCESS);
 }
@@ -68,7 +68,7 @@ int	ft_is_last_char_a_line_break(char *content)
 	return (TRUE);
 }
 
-int	ft_validate(char **map, t_info *info)
+int	ft_validate(char **map, t_map_info *info)
 {
 	if (ft_validate_1(map, info) == FAIL)
 		return (FAIL);

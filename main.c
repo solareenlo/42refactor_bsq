@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 17:01:58 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:43:05 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,18 @@ static char	*read_to_eof(int ifd)
 
 int			ft_main_1(void)
 {
-	char	*content;
-	char	**map;
-	t_info	*info;
+	char		*content;
+	char		**map;
+	t_map_info	*info;
 
 	content = read_to_eof(STDIN);
 	if (ft_is_last_char_a_line_break(content) == FALSE)
 		return (FAIL);
 	map = ft_split(content, (char *)"\n");
 	free(content);
-	if (ft_is_valid_map_info(map) == FAIL)
+	if (ft_is_valid_map_info(map) == FALSE)
 		return (FAIL);
-	if ((info = ft_prse(map)) == FAIL)
+	if ((info = ft_parse_map_info(map)) == FAIL)
 		return (FAIL);
 	if (ft_validate(map, info) == FAIL)
 		return (FAIL);
@@ -69,10 +69,10 @@ int			ft_main_1(void)
 
 int			ft_main_2(int argc, char *argv[], int i)
 {
-	int		ifd;
-	char	*content;
-	char	**map;
-	t_info	*info;
+	int			ifd;
+	char		*content;
+	char		**map;
+	t_map_info	*info;
 
 	if ((ifd = open(argv[i], O_RDONLY)) == -1)
 		return (FAIL);
@@ -84,7 +84,7 @@ int			ft_main_2(int argc, char *argv[], int i)
 	free(content);
 	if (ft_is_valid_map_info(map) == FAIL)
 		return (FAIL);
-	if (!(info = ft_prse(map)))
+	if (!(info = ft_parse_map_info(map)))
 		return (FAIL);
 	if (ft_validate(map, info) == FAIL)
 		return (FAIL);
