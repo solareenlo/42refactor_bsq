@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 06:27:52 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 06:30:33 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_bool		ft_is_last_char_a_line_break(char *content)
 	return (TRUE);
 }
 
-int			ft_validate(char **map, t_map_info *map_info)
+int			ft_validate_map(char **map, t_map_info *map_info)
 {
 	if (validate_exist_of_map(map, map_info) == FAIL)
 		return (FAIL);

@@ -6,13 +6,13 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 05:19:38 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 06:32:42 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void		ft_free(char ***map)
+void		ft_free_map(char ***map)
 {
 	long int	i;
 
@@ -60,10 +60,10 @@ int			ft_main_1(void)
 	map_info = ft_parse_map_info(map);
 	if (map_info == NULL)
 		return (FAIL);
-	if (ft_validate(map, map_info) == FAIL)
+	if (ft_validate_map(map, map_info) == FAIL)
 		return (FAIL);
 	ft_make_map(map, map_info);
-	ft_free(&map);
+	ft_free_map(&map);
 	free(map_info);
 	return (SUCCESS);
 }
@@ -89,12 +89,12 @@ int			ft_main_2(int argc, char *argv[], int i)
 	map_info = ft_parse_map_info(map);
 	if (map_info == NULL)
 		return (FAIL);
-	if (ft_validate(map, map_info) == FAIL)
+	if (ft_validate_map(map, map_info) == FAIL)
 		return (FAIL);
 	ft_make_map(map, map_info);
 	if (!(i + 1 == argc))
 		ft_putstr((char *)"\n");
-	ft_free(&map);
+	ft_free_map(&map);
 	free(map_info);
 	return (SUCCESS);
 }
