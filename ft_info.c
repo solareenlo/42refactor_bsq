@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 14:20:55 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:21:58 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_validate_5(char **map)
 		return (FAIL);
 	i = -1;
 	while (++i < len - 3)
-		if (!(line[i] >= '0' && line[i] <= '9'))
+		if (ft_isdigit(line[i]) == FALSE)
 			return (FAIL);
 	if (!(ft_is_printable(line[len - 1]) && ft_is_printable(line[len - 2]) &&
 			ft_is_printable(line[len - 3])))

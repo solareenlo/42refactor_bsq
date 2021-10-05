@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 14:55:33 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:21:15 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void			ft_putstr(char *str);
 void			ft_puterror(char *str);
 int				ft_strlen(char *str);
 int				ft_is_printable(char c);
+t_bool			ft_isspace(char c);
+t_bool			ft_isdigit(char c);
 char			*ft_strdup(char *src);
 char			*ft_strjoin(char *s1, char *s2);
 char			**ft_split(char *str, char *charset);

@@ -6,28 +6,13 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 18:51:43 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 15:08:38 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:20:31 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-static t_bool	is_space(char c)
-{
-	if (c == ' ' || c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r')
-		return (TRUE);
-	else
-		return (FALSE);
-}
-
-static t_bool	is_digit(char c)
-{
-	if ('0' <= c && c <= '9')
-		return (TRUE);
-	return (FALSE);
-}
-
-int				ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int	integer;
 	int	sign;
@@ -36,7 +21,7 @@ int				ft_atoi(char *str)
 	integer = 0;
 	sign = 0;
 	i = 0;
-	while (is_space(str[i]))
+	while (ft_isspace(str[i]))
 		i++;
 	while (str[i] == '+' || str[i] == '-')
 	{
@@ -44,7 +29,7 @@ int				ft_atoi(char *str)
 			sign++;
 		i++;
 	}
-	while (str[i] != '\0' && is_digit(str[i]))
+	while (str[i] != '\0' && ft_isdigit(str[i]))
 	{
 		integer = integer * 10 + (str[i] - '0');
 		i++;
