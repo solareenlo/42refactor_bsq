@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 11:28:19 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 12:15:16 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # define SUCCESS 1
 # define FAIL 0
 # define FT_ERR_MAP "map error\n"
+# define TRUE 1
+# define FALSE 0
+
+typedef int		t_bool;
 
 typedef struct	s_bsq
 {

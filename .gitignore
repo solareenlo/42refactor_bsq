@@ -2,5 +2,8 @@
 bsq_base.tgz
 bsq_base
 
+obj
+bsq
+
 map_generator.pl
 example_file
