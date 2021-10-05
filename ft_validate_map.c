@@ -6,15 +6,15 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 18:46:14 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 06:27:52 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int		ft_validate_1(char **map, t_map_info *info)
+static int	validate_exist_of_map(char **map, t_map_info *info)
 {
-	if (!(map[0] && map[1]))
+	if (!map || !map[0] || !map[1])
 		return (FAIL);
 	if (!(map[1][0] == info->empty || map[1][0] == info->obstacle ||
 			map[1][0] == info->full))
@@ -22,7 +22,7 @@ int		ft_validate_1(char **map, t_map_info *info)
 	return (SUCCESS);
 }
 
-int		ft_validate_2(char **map, t_map_info *info)
+static int	validate_char_of_map(char **map, t_map_info *info)
 {
 	int	i;
 	int	j;
@@ -40,7 +40,7 @@ int		ft_validate_2(char **map, t_map_info *info)
 	return (SUCCESS);
 }
 
-int		ft_validate_3(char **map, t_map_info *info)
+static int	validate_col_and_row_of_map(char **map, t_map_info *info)
 {
 	int	i;
 	int	len;
@@ -58,7 +58,7 @@ int		ft_validate_3(char **map, t_map_info *info)
 	return (SUCCESS);
 }
 
-t_bool	ft_is_last_char_a_line_break(char *content)
+t_bool		ft_is_last_char_a_line_break(char *content)
 {
 	int	len;
 
@@ -68,13 +68,13 @@ t_bool	ft_is_last_char_a_line_break(char *content)
 	return (TRUE);
 }
 
-int		ft_validate(char **map, t_map_info *info)
+int			ft_validate(char **map, t_map_info *map_info)
 {
-	if (ft_validate_1(map, info) == FAIL)
+	if (validate_exist_of_map(map, map_info) == FAIL)
 		return (FAIL);
-	if (ft_validate_2(map, info) == FAIL)
+	if (validate_char_of_map(map, map_info) == FAIL)
 		return (FAIL);
-	if (ft_validate_3(map, info) == FAIL)
+	if (validate_col_and_row_of_map(map, map_info) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
 }
