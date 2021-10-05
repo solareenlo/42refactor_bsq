@@ -6,7 +6,7 @@
 #    By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 13:12:23 by louisnop          #+#    #+#              #
-#    Updated: 2021/10/05 12:25:19 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/10/05 15:15:36 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,18 @@ leak: re
 address: CFLAGS += -g -fsanitize=address
 address: re
 
+.PHONY: val
+val: re
+val:
+	valgrind --leak-check=full --show-leak-kinds=all ./bsq example_file
+
 .PHONY: clean
 clean:
-	-rm -fr $(OBJ_DIR)
+	-rm -fr $(OBJ_DIR) *.dSYM
 
 .PHONY: fclean
 fclean:
-	-rm -fr $(TARGET) $(OBJ_DIR)
+	-rm -fr $(TARGET) $(OBJ_DIR) *.dSMY
 
 .PHONY: re
 re: fclean all
