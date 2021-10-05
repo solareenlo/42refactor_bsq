@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 15:04:31 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 17:01:58 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int			ft_main_1(void)
 		return (FAIL);
 	map = ft_split(content, (char *)"\n");
 	free(content);
-	if (ft_validate_5(map) == FAIL)
+	if (ft_is_valid_map_info(map) == FAIL)
 		return (FAIL);
-	if (!(info = ft_prse(map)))
+	if ((info = ft_prse(map)) == FAIL)
 		return (FAIL);
 	if (ft_validate(map, info) == FAIL)
 		return (FAIL);
@@ -82,7 +82,7 @@ int			ft_main_2(int argc, char *argv[], int i)
 	close(ifd);
 	map = ft_split(content, (char *)"\n");
 	free(content);
-	if (ft_validate_5(map) == FAIL)
+	if (ft_is_valid_map_info(map) == FAIL)
 		return (FAIL);
 	if (!(info = ft_prse(map)))
 		return (FAIL);

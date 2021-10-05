@@ -6,18 +6,18 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 12:41:10 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/05 15:28:31 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-int		g_word_index = 0;
-int		g_start = 0;
-int		g_end = 0;
-int		g_state = 0;
+int				g_word_index = 0;
+int				g_start = 0;
+int				g_end = 0;
+int				g_state = 0;
 
-int		ft_is_in_charset(char c, char *charset)
+static t_bool	is_in_charset(char c, char *charset)
 {
 	int	i;
 
@@ -25,13 +25,13 @@ int		ft_is_in_charset(char c, char *charset)
 	while (charset[i])
 	{
 		if (charset[i] == c)
-			return (1);
+			return (TRUE);
 		i++;
 	}
-	return (0);
+	return (FALSE);
 }
 
-int		ft_get_wc(char *str, char *charset)
+static int		get_wc(char *str, char *charset)
 {
 	int	wc;
 	int	state;
@@ -40,7 +40,7 @@ int		ft_get_wc(char *str, char *charset)
 	state = OUT;
 	while (*str)
 	{
-		if (ft_is_in_charset(*str, charset))
+		if (is_in_charset(*str, charset))
 			state = OUT;
 		else if (state == OUT)
 		{
@@ -52,7 +52,7 @@ int		ft_get_wc(char *str, char *charset)
 	return (wc);
 }
 
-void	ft_update_in_word(int i)
+static void		update_in_word(int i)
 {
 	if (g_state == OUT)
 	{
@@ -64,7 +64,7 @@ void	ft_update_in_word(int i)
 		g_end = i;
 }
 
-void	ft_add_last_word(char **res, char *str, int i)
+static void		add_last_word(char **res, char *str, int i)
 {
 	int	j;
 
@@ -84,17 +84,17 @@ void	ft_add_last_word(char **res, char *str, int i)
 	g_state = 0;
 }
 
-char	**ft_split(char *str, char *charset)
+char			**ft_split(char *str, char *charset)
 {
 	char	**res;
 	int		i;
 	int		j;
 
-	res = (char **)malloc(sizeof(char *) * (ft_get_wc(str, charset) + 1));
+	res = (char **)malloc(sizeof(char *) * (get_wc(str, charset) + 1));
 	i = -1;
 	while (str[++i])
 	{
-		if (ft_is_in_charset(str[i], charset))
+		if (is_in_charset(str[i], charset))
 		{
 			if (g_state == OUT)
 				continue ;
@@ -108,8 +108,8 @@ char	**ft_split(char *str, char *charset)
 			g_word_index++;
 		}
 		else
-			ft_update_in_word(i);
+			update_in_word(i);
 	}
-	ft_add_last_word(res, str, i);
+	add_last_word(res, str, i);
 	return (res);
 }
