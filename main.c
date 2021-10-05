@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 18:43:05 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 05:19:38 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			ft_main_1(void)
 {
 	char		*content;
 	char		**map;
-	t_map_info	*info;
+	t_map_info	*map_info;
 
 	content = read_to_eof(STDIN);
 	if (ft_is_last_char_a_line_break(content) == FALSE)
@@ -57,13 +57,14 @@ int			ft_main_1(void)
 	free(content);
 	if (ft_is_valid_map_info(map) == FALSE)
 		return (FAIL);
-	if ((info = ft_parse_map_info(map)) == FAIL)
+	map_info = ft_parse_map_info(map);
+	if (map_info == NULL)
 		return (FAIL);
-	if (ft_validate(map, info) == FAIL)
+	if (ft_validate(map, map_info) == FAIL)
 		return (FAIL);
-	ft_make_map(map, info);
+	ft_make_map(map, map_info);
 	ft_free(&map);
-	free(info);
+	free(map_info);
 	return (SUCCESS);
 }
 
@@ -72,9 +73,10 @@ int			ft_main_2(int argc, char *argv[], int i)
 	int			ifd;
 	char		*content;
 	char		**map;
-	t_map_info	*info;
+	t_map_info	*map_info;
 
-	if ((ifd = open(argv[i], O_RDONLY)) == -1)
+	ifd = open(argv[i], O_RDONLY);
+	if (ifd == -1)
 		return (FAIL);
 	content = read_to_eof(ifd);
 	if (ft_is_last_char_a_line_break(content) == FALSE)
@@ -84,15 +86,16 @@ int			ft_main_2(int argc, char *argv[], int i)
 	free(content);
 	if (ft_is_valid_map_info(map) == FAIL)
 		return (FAIL);
-	if (!(info = ft_parse_map_info(map)))
+	map_info = ft_parse_map_info(map);
+	if (map_info == NULL)
 		return (FAIL);
-	if (ft_validate(map, info) == FAIL)
+	if (ft_validate(map, map_info) == FAIL)
 		return (FAIL);
-	ft_make_map(map, info);
+	ft_make_map(map, map_info);
 	if (!(i + 1 == argc))
 		ft_putstr((char *)"\n");
 	ft_free(&map);
-	free(info);
+	free(map_info);
 	return (SUCCESS);
 }
 

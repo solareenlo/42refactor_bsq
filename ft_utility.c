@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 15:32:57 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 05:43:54 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		ft_strlen(char *str)
 {
 	int	i;
 
+	if (str == NULL)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
@@ -31,7 +33,9 @@ t_bool	ft_is_printable(char c)
 
 t_bool	ft_isspace(char c)
 {
-	if (c == ' ' || c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r')
+	if (c == ' ')
+		return (TRUE);
+	if (c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r')
 		return (TRUE);
 	else
 		return (FALSE);
