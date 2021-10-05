@@ -6,7 +6,7 @@
 #    By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 13:12:23 by louisnop          #+#    #+#              #
-#    Updated: 2021/10/05 11:50:23 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/10/05 12:25:19 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,11 @@ address: re
 
 .PHONY: clean
 clean:
-	-rm -f $(OBJS)
+	-rm -fr $(OBJ_DIR)
 
 .PHONY: fclean
 fclean:
-	-rm -f $(TARGET) $(OBJS)
+	-rm -fr $(TARGET) $(OBJ_DIR)
 
 .PHONY: re
 re: fclean all
