@@ -6,23 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 13:01:38 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 17:54:58 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-
-int		ft_strlen(char *str)
-{
-	int	i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 t_bool	ft_is_printable(char c)
 {
