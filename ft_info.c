@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:45:43 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 18:17:40 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@ static t_bool	is_valid_map_info_chars(char *chars)
 	return (TRUE);
 }
 
-t_bool			ft_is_valid_map_info(char **map)
+int				ft_validate_map_info(char **map)
 {
 	int	len;
 
 	if (!map || !map[0])
-		return (FALSE);
+		return (FAIL);
 	len = ft_strlen(map[0]);
 	if (len < 4)
-		return (FALSE);
+		return (FAIL);
 	if (is_valid_number_of_line(map[0], len) == FALSE)
-		return (FALSE);
+		return (FAIL);
 	if (is_valid_map_info_chars(&map[0][len - 3]) == FALSE)
-		return (FALSE);
-	return (TRUE);
+		return (FAIL);
+	return (SUCCESS);
 }
 
-static int		get_rows(char *first_line, int len)
+static int		get_map_rows(char *first_line, int len)
 {
 	int		i;
 	char	*number_of_lines;
@@ -87,13 +87,13 @@ t_map_info		*ft_parse_map_info(char **map)
 	if (map_info == NULL)
 		return (NULL);
 	len = ft_strlen(map[0]);
-	map_info->rows = get_rows(map[0], len);
+	map_info->rows = get_map_rows(map[0], len);
 	if (map_info->rows < 0)
 	{
 		free(map_info);
 		return (NULL);
 	}
-	map_info->cols = ft_map_col_size(map);
+	map_info->cols = ft_get_map_cols(map);
 	if (map_info->cols < 0)
 	{
 		free(map_info);

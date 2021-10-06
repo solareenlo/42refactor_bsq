@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 16:07:12 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 18:17:24 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char			*ft_strdup(char *src);
 char			*ft_strjoin(char *s1, char *s2);
 char			**ft_split(char *str, char *charset);
 int				ft_atoi(char *str);
-t_bool			ft_is_valid_map_info(char **map);
+int				ft_validate_map_info(char **map);
 t_map_info		*ft_parse_map_info(char **map);
 int				ft_validate_map(char **map, t_map_info *info);
 t_bool			ft_is_last_char_a_line_break(char *content);
@@ -71,6 +71,6 @@ t_bool			ft_is_empty_char(char **map, int col, int row, t_map_info *p_info);
 void			ft_find_biggest_square(char **map, t_map_info *p_info);
 void			ft_write_biggest_square(char **map, t_map_info *p_info);
 void			ft_put_map(char **map, t_map_info *p_info);
-int				ft_map_col_size(char **map);
+int				ft_get_map_cols(char **map);
 
 #endif

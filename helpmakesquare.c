@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 16:07:03 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 18:17:34 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int	g_max_size;
 extern int	g_col;
 extern int	g_row;
 
-int			ft_map_col_size(char **map)
+int			ft_get_map_cols(char **map)
 {
 	int	col;
 

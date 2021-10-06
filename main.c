@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 16:05:04 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 18:04:45 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	main_1(int ifd)
 	}
 	map = ft_split(content, (char *)"\n");
 	free(content);
-	if (ft_is_valid_map_info(map) == FALSE)
+	if (ft_validate_map_info(map) == FAIL)
 	{
 		free_map(&map);
 		return (FAIL);

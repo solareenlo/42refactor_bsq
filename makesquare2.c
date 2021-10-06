@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 15:47:04 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 18:13:35 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,44 @@
 extern int		g_max_size;
 extern int		g_col;
 extern int		g_row;
+
+void			ft_put_map(char **map, t_map_info *p_info)
+{
+	int	row;
+	int	col;
+
+	row = 1;
+	while (row <= p_info->rows)
+	{
+		col = 0;
+		while (col < p_info->cols)
+		{
+			write(1, &map[row][col], 1);
+			col++;
+		}
+		write(1, "\n", 1);
+		row++;
+	}
+}
+
+void			ft_write_biggest_square(char **map, t_map_info *p_info)
+{
+	int	row;
+	int	col;
+
+	row = 0;
+	while (row < g_max_size)
+	{
+		col = 0;
+		while (col < g_max_size)
+		{
+			map[g_row + row][g_col + col] = p_info->full;
+			col++;
+		}
+		row++;
+	}
+	return ;
+}
 
 static t_bool	extend_square(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 {
@@ -56,44 +94,6 @@ static void		set_biggest_square_info(char **map,
 		g_col = p_tempcrs->col;
 		g_row = p_tempcrs->row;
 	}
-}
-
-void			ft_put_map(char **map, t_map_info *p_info)
-{
-	int	row;
-	int	col;
-
-	row = 1;
-	while (row <= p_info->rows)
-	{
-		col = 0;
-		while (col < p_info->cols)
-		{
-			write(1, &map[row][col], 1);
-			col++;
-		}
-		write(1, "\n", 1);
-		row++;
-	}
-}
-
-void			ft_write_biggest_square(char **map, t_map_info *p_info)
-{
-	int	row;
-	int	col;
-
-	row = 0;
-	while (row < g_max_size)
-	{
-		col = 0;
-		while (col < g_max_size)
-		{
-			map[g_row + row][g_col + col] = p_info->full;
-			col++;
-		}
-		row++;
-	}
-	return ;
 }
 
 void			ft_find_biggest_square(char **map, t_map_info *p_info)
