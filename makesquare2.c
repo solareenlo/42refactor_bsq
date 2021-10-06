@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 18:44:15 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:31:57 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		ft_put_map(char **map, t_map_info *p_info)
 	int	j;
 
 	i = 1;
-	while (i <= p_info->number_of_rows)
+	while (i <= p_info->rows)
 	{
 		j = 0;
 		while (j < ft_map_colsize(map))
@@ -99,7 +99,7 @@ void		ft_change_map(char **map, t_map_info *p_info)
 	return ;
 }
 
-void		ft_make_map(char **map, t_map_info *p_info)
+void		ft_make_map(char **map, t_map_info *p_map_info)
 {
 	t_tempcrs	*p_tempcrs;
 
@@ -107,19 +107,21 @@ void		ft_make_map(char **map, t_map_info *p_info)
 	g_col = 0;
 	g_row = 0;
 	p_tempcrs = (t_tempcrs *)malloc(sizeof(t_tempcrs));
+	if (p_tempcrs == NULL)
+		return ;
 	set_tempcrs(p_tempcrs);
-	while (p_tempcrs->row <= p_info->number_of_rows)
+	while (p_tempcrs->row <= p_map_info->rows)
 	{
 		p_tempcrs->col = 0;
 		while (p_tempcrs->col < ft_map_colsize(map))
 		{
-			if (ft_check_1(map, p_tempcrs->col, p_tempcrs->row, p_info) == 1)
-				ft_check_3(map, p_tempcrs, p_info);
+			if (ft_check_1(map, p_tempcrs->col, p_tempcrs->row, p_map_info) == 1)
+				ft_check_3(map, p_tempcrs, p_map_info);
 			p_tempcrs->col++;
 		}
 		p_tempcrs->row++;
 	}
-	ft_change_map(map, p_info);
+	ft_change_map(map, p_map_info);
 	free(p_tempcrs);
 	return ;
 }

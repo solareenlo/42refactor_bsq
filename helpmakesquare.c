@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 18:29:28 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:31:56 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			ft_check_1(char **map, int col, int row, t_map_info *p_info)
 {
 	if (col == ft_map_colsize(map))
 		return (0);
-	if (row == p_info->number_of_rows + 1)
+	if (row == p_info->rows + 1)
 		return (0);
 	if (map[row][col] == p_info->obstacle || map[row][col] == '\0')
 		return (0);

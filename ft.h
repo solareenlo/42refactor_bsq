@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 06:30:21 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:31:52 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_bsq
 
 typedef struct	s_map_info
 {
-	int			number_of_rows;
+	int			rows;
 	char		empty;
 	char		obstacle;
 	char		full;

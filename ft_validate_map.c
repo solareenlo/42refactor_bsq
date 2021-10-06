@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 06:30:33 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:31:55 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	validate_col_and_row_of_map(char **map, t_map_info *info)
 			return (FAIL);
 		i++;
 	}
-	if (i - 1 != info->number_of_rows)
+	if (i - 1 != info->rows)
 		return (FAIL);
 	return (SUCCESS);
 }

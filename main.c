@@ -6,13 +6,13 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 06:45:34 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:09:00 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void		ft_free_map(char ***map)
+void		free_map(char ***map)
 {
 	long int	i;
 
@@ -60,23 +60,23 @@ int			ft_main_1(void)
 	free(content);
 	if (ft_is_valid_map_info(map) == FALSE)
 	{
-		ft_free_map(&map);
+		free_map(&map);
 		return (FAIL);
 	}
 	map_info = ft_parse_map_info(map);
 	if (map_info == NULL)
 	{
-		ft_free_map(&map);
+		free_map(&map);
 		return (FAIL);
 	}
 	if (ft_validate_map(map, map_info) == FAIL)
 	{
-		ft_free_map(&map);
+		free_map(&map);
 		free(map_info);
 		return (FAIL);
 	}
 	ft_make_map(map, map_info);
-	ft_free_map(&map);
+	free_map(&map);
 	free(map_info);
 	return (SUCCESS);
 }
@@ -102,25 +102,25 @@ int			ft_main_2(int argc, char *argv[], int i)
 	free(content);
 	if (ft_is_valid_map_info(map) == FAIL)
 	{
-		ft_free_map(&map);
+		free_map(&map);
 		return (FAIL);
 	}
 	map_info = ft_parse_map_info(map);
 	if (map_info == NULL)
 	{
-		ft_free_map(&map);
+		free_map(&map);
 		return (FAIL);
 	}
 	if (ft_validate_map(map, map_info) == FAIL)
 	{
-		ft_free_map(&map);
+		free_map(&map);
 		free(map_info);
 		return (FAIL);
 	}
 	ft_make_map(map, map_info);
 	if (!(i + 1 == argc))
 		ft_putstr((char *)"\n");
-	ft_free_map(&map);
+	free_map(&map);
 	free(map_info);
 	return (SUCCESS);
 }
