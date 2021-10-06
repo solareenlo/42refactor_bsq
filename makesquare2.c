@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 11:31:57 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:46:34 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,18 +102,24 @@ void		ft_change_map(char **map, t_map_info *p_info)
 void		ft_make_map(char **map, t_map_info *p_map_info)
 {
 	t_tempcrs	*p_tempcrs;
+	int			map_cols;
+	int			map_rows;
 
 	g_max = 0;
 	g_col = 0;
 	g_row = 0;
+	map_cols = ft_map_colsize(map);
+	if (map_cols < 0)
+		return ;
+	map_rows = p_map_info->rows;
 	p_tempcrs = (t_tempcrs *)malloc(sizeof(t_tempcrs));
 	if (p_tempcrs == NULL)
 		return ;
-	set_tempcrs(p_tempcrs);
-	while (p_tempcrs->row <= p_map_info->rows)
+	ft_set_tempcrs(p_tempcrs);
+	while (p_tempcrs->row <= map_rows)
 	{
 		p_tempcrs->col = 0;
-		while (p_tempcrs->col < ft_map_colsize(map))
+		while (p_tempcrs->col < map_cols)
 		{
 			if (ft_check_1(map, p_tempcrs->col, p_tempcrs->row, p_map_info) == 1)
 				ft_check_3(map, p_tempcrs, p_map_info);

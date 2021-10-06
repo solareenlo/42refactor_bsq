@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 11:31:56 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:50:15 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ extern int	g_row;
 
 int			ft_map_colsize(char **map)
 {
-	int	count;
+	int	col;
 
-	count = 0;
-	while (map[1][count])
-		count++;
-	return (count);
+	if (!map || !map[0] || !map[1] || !map[1][0])
+		return (-1);
+	col = 0;
+	while (map[1][col])
+		col++;
+	return (col);
 }
 
-void		set_tempcrs(t_tempcrs *p_tempcrs)
+void		ft_set_tempcrs(t_tempcrs *p_tempcrs)
 {
 	p_tempcrs->row = 1;
 	p_tempcrs->col = 0;

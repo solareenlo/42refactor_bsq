@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 11:31:52 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 11:46:16 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_bool			ft_is_valid_map_info(char **map);
 t_map_info		*ft_parse_map_info(char **map);
 int				ft_validate_map(char **map, t_map_info *info);
 t_bool			ft_is_last_char_a_line_break(char *content);
-void			set_tempcrs(t_tempcrs *p_tempcrs);
+void			ft_set_tempcrs(t_tempcrs *p_tempcrs);
 int				ft_check_1(char **map, int col, int row, t_map_info *p_info);
 void			ft_make_map(char **map, t_map_info *p_info);
 void			set_bsq(t_bsq *p_bsq);
