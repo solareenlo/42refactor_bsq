@@ -6,17 +6,17 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:54:18 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 15:26:23 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-extern int	g_max_size;
-extern int	g_col;
-extern int	g_row;
+extern int		g_max_size;
+extern int		g_col;
+extern int		g_row;
 
-int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
+static t_bool	extend_square(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 								p_tempcrs->col + i,
 								p_tempcrs->row + p_tempcrs->max_size,
 								p_info) == FALSE)
-			return (0);
+			return (FALSE);
 		i++;
 	}
 	i = 0;
@@ -37,16 +37,16 @@ int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 								p_tempcrs->col + p_tempcrs->max_size,
 								p_tempcrs->row + i,
 								p_info) == FALSE)
-			return (0);
+			return (FALSE);
 		i++;
 	}
-	return (1);
+	return (TRUE);
 }
 
-void		ft_check_3(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
+static void		find_biggest_square(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 {
 	p_tempcrs->max_size = 0;
-	while (ft_check_2(map, p_tempcrs, p_info) == 1)
+	while (extend_square(map, p_tempcrs, p_info) == TRUE)
 		p_tempcrs->max_size++;
 	if (g_max_size < p_tempcrs->max_size)
 	{
@@ -56,7 +56,7 @@ void		ft_check_3(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 	}
 }
 
-void		ft_put_map(char **map, t_map_info *p_info)
+void			ft_put_map(char **map, t_map_info *p_info)
 {
 	int	row;
 	int	col;
@@ -75,7 +75,7 @@ void		ft_put_map(char **map, t_map_info *p_info)
 	}
 }
 
-static void	change_map(char **map, t_map_info *p_info)
+static void		change_map(char **map, t_map_info *p_info)
 {
 	int	row;
 	int	col;
@@ -94,7 +94,7 @@ static void	change_map(char **map, t_map_info *p_info)
 	return ;
 }
 
-void		ft_make_map(char **map, t_map_info *p_info)
+void			ft_make_map(char **map, t_map_info *p_info)
 {
 	t_tempcrs	*p_tempcrs;
 
@@ -112,7 +112,7 @@ void		ft_make_map(char **map, t_map_info *p_info)
 		{
 			if (ft_is_empty_char(map, p_tempcrs->col, p_tempcrs->row, p_info) ==
 				TRUE)
-				ft_check_3(map, p_tempcrs, p_info);
+				find_biggest_square(map, p_tempcrs, p_info);
 			p_tempcrs->col++;
 		}
 		p_tempcrs->row++;
