@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:07:38 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:45:44 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ extern int	g_max;
 extern int	g_col;
 extern int	g_row;
 
-int			ft_map_colsize(char **map)
+int			ft_map_col_size(char **map)
 {
 	int	col;
 
@@ -30,7 +30,7 @@ void		ft_set_tempcrs(t_tempcrs *p_tempcrs)
 {
 	p_tempcrs->row = 1;
 	p_tempcrs->col = 0;
-	p_tempcrs->size = 0;
+	p_tempcrs->max_size = 0;
 }
 
 t_bool		ft_is_empty_char(char **map, int col, int row, t_map_info *p_info)
@@ -48,5 +48,5 @@ void		ft_set_bsq(t_bsq *p_bsq)
 {
 	p_bsq->x = g_col;
 	p_bsq->y = g_row;
-	p_bsq->size = g_max;
+	p_bsq->max_size = g_max;
 }

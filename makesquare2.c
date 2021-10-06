@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:13:11 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:43:41 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 	int	i;
 
 	i = 0;
-	while (i <= p_tempcrs->size)
+	while (i <= p_tempcrs->max_size)
 	{
 		if (ft_is_empty_char(map,
 								p_tempcrs->col + i,
-								p_tempcrs->row + p_tempcrs->size,
+								p_tempcrs->row + p_tempcrs->max_size,
 								p_info) == FALSE)
 			return (0);
 		i++;
 	}
 	i = 0;
-	while (i <= p_tempcrs->size)
+	while (i <= p_tempcrs->max_size)
 	{
 		if (ft_is_empty_char(map,
-								p_tempcrs->col + p_tempcrs->size,
+								p_tempcrs->col + p_tempcrs->max_size,
 								p_tempcrs->row + i,
 								p_info) == FALSE)
 			return (0);
@@ -45,12 +45,12 @@ int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 
 void		ft_check_3(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 {
-	p_tempcrs->size = 0;
+	p_tempcrs->max_size = 0;
 	while (ft_check_2(map, p_tempcrs, p_info) == 1)
-		p_tempcrs->size++;
-	if (g_max < p_tempcrs->size)
+		p_tempcrs->max_size++;
+	if (g_max < p_tempcrs->max_size)
 	{
-		g_max = p_tempcrs->size;
+		g_max = p_tempcrs->max_size;
 		g_col = p_tempcrs->col;
 		g_row = p_tempcrs->row;
 	}

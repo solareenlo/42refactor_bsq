@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 13:33:52 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:45:43 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_map_info		*ft_parse_map_info(char **map)
 		free(map_info);
 		return (NULL);
 	}
-	map_info->cols = ft_map_colsize(map);
+	map_info->cols = ft_map_col_size(map);
 	if (map_info->cols < 0)
 	{
 		free(map_info);

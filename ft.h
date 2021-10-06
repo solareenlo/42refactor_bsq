@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:07:46 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:45:42 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	s_bsq
 {
 	int			x;
 	int			y;
-	int			size;
+	int			max_size;
 }				t_bsq;
 
 typedef struct	s_map_info
@@ -52,7 +52,7 @@ typedef struct	s_tempcrs
 {
 	int			col;
 	int			row;
-	int			size;
+	int			max_size;
 }				t_tempcrs;
 
 int				g_max;
@@ -78,6 +78,6 @@ t_bool			ft_is_empty_char(char **map, int col, int row, t_map_info *p_info);
 void			ft_make_map(char **map, t_map_info *p_info);
 void			ft_put_map(char **map, t_map_info *p_info);
 void			ft_set_bsq(t_bsq *p_bsq);
-int				ft_map_colsize(char **map);
+int				ft_map_col_size(char **map);
 
 #endif
