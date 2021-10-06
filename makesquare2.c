@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 13:53:29 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:13:11 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,20 @@ int			ft_check_2(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 	i = 0;
 	while (i <= p_tempcrs->size)
 	{
-		if (ft_check_1(map,
-						p_tempcrs->col + i,
-						p_tempcrs->row + p_tempcrs->size,
-						p_info) == 0)
+		if (ft_is_empty_char(map,
+								p_tempcrs->col + i,
+								p_tempcrs->row + p_tempcrs->size,
+								p_info) == FALSE)
 			return (0);
 		i++;
 	}
 	i = 0;
 	while (i <= p_tempcrs->size)
 	{
-		if (ft_check_1(map,
-						p_tempcrs->col + p_tempcrs->size,
-						p_tempcrs->row + i,
-						p_info) == 0)
+		if (ft_is_empty_char(map,
+								p_tempcrs->col + p_tempcrs->size,
+								p_tempcrs->row + i,
+								p_info) == FALSE)
 			return (0);
 		i++;
 	}
@@ -110,7 +110,8 @@ void		ft_make_map(char **map, t_map_info *p_info)
 		p_tempcrs->col = 0;
 		while (p_tempcrs->col < p_info->cols)
 		{
-			if (ft_check_1(map, p_tempcrs->col, p_tempcrs->row, p_info) == 1)
+			if (ft_is_empty_char(map, p_tempcrs->col, p_tempcrs->row, p_info) ==
+				TRUE)
 				ft_check_3(map, p_tempcrs, p_info);
 			p_tempcrs->col++;
 		}

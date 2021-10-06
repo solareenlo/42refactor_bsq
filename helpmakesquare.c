@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 13:07:37 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:07:38 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ void		ft_set_tempcrs(t_tempcrs *p_tempcrs)
 	p_tempcrs->size = 0;
 }
 
-int			ft_check_1(char **map, int col, int row, t_map_info *p_info)
+t_bool		ft_is_empty_char(char **map, int col, int row, t_map_info *p_info)
 {
-	if (col == ft_map_colsize(map))
-		return (0);
+	if (col == p_info->cols)
+		return (FALSE);
 	if (row == p_info->rows + 1)
-		return (0);
+		return (FALSE);
 	if (map[row][col] == p_info->obstacle || map[row][col] == '\0')
-		return (0);
-	return (1);
+		return (FALSE);
+	return (TRUE);
 }
 
 void		ft_set_bsq(t_bsq *p_bsq)
