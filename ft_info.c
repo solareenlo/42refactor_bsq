@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 11:31:53 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 13:12:30 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,16 @@ static t_bool	is_valid_map_info_chars(char *chars)
 
 t_bool			ft_is_valid_map_info(char **map)
 {
-	char	*first_line;
-	int		len;
+	int	len;
 
 	if (!map || !map[0])
 		return (FALSE);
-	first_line = map[0];
-	len = ft_strlen(first_line);
+	len = ft_strlen(map[0]);
 	if (len < 4)
 		return (FALSE);
-	if (is_valid_number_of_line(first_line, len) == FALSE)
+	if (is_valid_number_of_line(map[0], len) == FALSE)
 		return (FALSE);
-	if (is_valid_map_info_chars(&first_line[len - 3]) == FALSE)
+	if (is_valid_map_info_chars(&map[0][len - 3]) == FALSE)
 		return (FALSE);
 	return (TRUE);
 }
@@ -83,22 +81,21 @@ static int		get_rows(char *first_line, int len)
 t_map_info		*ft_parse_map_info(char **map)
 {
 	t_map_info	*map_info;
-	char		*first_line;
 	int			len;
 
 	map_info = (t_map_info *)malloc(sizeof(t_map_info));
 	if (map_info == NULL)
 		return (NULL);
-	first_line = map[0];
-	len = ft_strlen(first_line);
-	map_info->rows = get_rows(first_line, len);
+	len = ft_strlen(map[0]);
+	map_info->rows = get_rows(map[0], len);
 	if (map_info->rows < 0)
 	{
 		free(map_info);
 		return (NULL);
 	}
-	map_info->empty = first_line[len - 3];
-	map_info->obstacle = first_line[len - 2];
-	map_info->full = first_line[len - 1];
+	map_info->cols = ft_map_colsize(map);
+	map_info->empty = map[0][len - 3];
+	map_info->obstacle = map[0][len - 2];
+	map_info->full = map[0][len - 1];
 	return (map_info);
 }

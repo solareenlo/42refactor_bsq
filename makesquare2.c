@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 11:46:34 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 12:29:32 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,44 +58,39 @@ void		ft_check_3(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 
 void		ft_put_map(char **map, t_map_info *p_info)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 1;
-	while (i <= p_info->rows)
+	row = 1;
+	while (row <= p_info->rows)
 	{
-		j = 0;
-		while (j < ft_map_colsize(map))
+		col = 0;
+		while (col < ft_map_colsize(map))
 		{
-			write(1, &map[i][j], 1);
-			j++;
+			write(1, &map[row][col], 1);
+			col++;
 		}
 		write(1, "\n", 1);
-		i++;
+		row++;
 	}
 }
 
 void		ft_change_map(char **map, t_map_info *p_info)
 {
-	int		i;
-	int		j;
-	t_bsq	*p_bsq;
+	int	row;
+	int	col;
 
-	i = 0;
-	p_bsq = (t_bsq *)malloc(sizeof(t_bsq));
-	set_bsq(p_bsq);
-	while (i < g_max)
+	row = 0;
+	while (row < g_max)
 	{
-		j = 0;
-		while (j < g_max)
+		col = 0;
+		while (col < g_max)
 		{
-			map[g_row + i][g_col + j] = p_info->full;
-			j++;
+			map[g_row + row][g_col + col] = p_info->full;
+			col++;
 		}
-		i++;
+		row++;
 	}
-	ft_put_map(map, p_info);
-	free(p_bsq);
 	return ;
 }
 
@@ -128,6 +123,7 @@ void		ft_make_map(char **map, t_map_info *p_map_info)
 		p_tempcrs->row++;
 	}
 	ft_change_map(map, p_map_info);
+	ft_put_map(map, p_map_info);
 	free(p_tempcrs);
 	return ;
 }
