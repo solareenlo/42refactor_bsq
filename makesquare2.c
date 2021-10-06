@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 15:26:23 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 15:47:04 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ static t_bool	extend_square(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info
 	return (TRUE);
 }
 
-static void		find_biggest_square(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
+static void		set_biggest_square_info(char **map,
+									t_tempcrs *p_tempcrs,
+									t_map_info *p_info)
 {
 	p_tempcrs->max_size = 0;
 	while (extend_square(map, p_tempcrs, p_info) == TRUE)
@@ -75,7 +77,7 @@ void			ft_put_map(char **map, t_map_info *p_info)
 	}
 }
 
-static void		change_map(char **map, t_map_info *p_info)
+void			ft_write_biggest_square(char **map, t_map_info *p_info)
 {
 	int	row;
 	int	col;
@@ -94,7 +96,7 @@ static void		change_map(char **map, t_map_info *p_info)
 	return ;
 }
 
-void			ft_make_map(char **map, t_map_info *p_info)
+void			ft_find_biggest_square(char **map, t_map_info *p_info)
 {
 	t_tempcrs	*p_tempcrs;
 
@@ -112,12 +114,11 @@ void			ft_make_map(char **map, t_map_info *p_info)
 		{
 			if (ft_is_empty_char(map, p_tempcrs->col, p_tempcrs->row, p_info) ==
 				TRUE)
-				find_biggest_square(map, p_tempcrs, p_info);
+				set_biggest_square_info(map, p_tempcrs, p_info);
 			p_tempcrs->col++;
 		}
 		p_tempcrs->row++;
 	}
-	change_map(map, p_info);
 	free(p_tempcrs);
 	return ;
 }

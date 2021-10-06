@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:54:16 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 16:07:03 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,4 @@ t_bool		ft_is_empty_char(char **map, int col, int row, t_map_info *p_info)
 	if (map[row][col] == p_info->obstacle || map[row][col] == '\0')
 		return (FALSE);
 	return (TRUE);
-}
-
-void		ft_set_bsq(t_bsq *p_bsq)
-{
-	p_bsq->x = g_col;
-	p_bsq->y = g_row;
-	p_bsq->max_size = g_max_size;
 }
