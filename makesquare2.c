@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 12:29:32 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 13:53:29 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		ft_put_map(char **map, t_map_info *p_info)
 	while (row <= p_info->rows)
 	{
 		col = 0;
-		while (col < ft_map_colsize(map))
+		while (col < p_info->cols)
 		{
 			write(1, &map[row][col], 1);
 			col++;
@@ -75,7 +75,7 @@ void		ft_put_map(char **map, t_map_info *p_info)
 	}
 }
 
-void		ft_change_map(char **map, t_map_info *p_info)
+static void	change_map(char **map, t_map_info *p_info)
 {
 	int	row;
 	int	col;
@@ -94,36 +94,29 @@ void		ft_change_map(char **map, t_map_info *p_info)
 	return ;
 }
 
-void		ft_make_map(char **map, t_map_info *p_map_info)
+void		ft_make_map(char **map, t_map_info *p_info)
 {
 	t_tempcrs	*p_tempcrs;
-	int			map_cols;
-	int			map_rows;
 
 	g_max = 0;
 	g_col = 0;
 	g_row = 0;
-	map_cols = ft_map_colsize(map);
-	if (map_cols < 0)
-		return ;
-	map_rows = p_map_info->rows;
 	p_tempcrs = (t_tempcrs *)malloc(sizeof(t_tempcrs));
 	if (p_tempcrs == NULL)
 		return ;
 	ft_set_tempcrs(p_tempcrs);
-	while (p_tempcrs->row <= map_rows)
+	while (p_tempcrs->row <= p_info->rows)
 	{
 		p_tempcrs->col = 0;
-		while (p_tempcrs->col < map_cols)
+		while (p_tempcrs->col < p_info->cols)
 		{
-			if (ft_check_1(map, p_tempcrs->col, p_tempcrs->row, p_map_info) == 1)
-				ft_check_3(map, p_tempcrs, p_map_info);
+			if (ft_check_1(map, p_tempcrs->col, p_tempcrs->row, p_info) == 1)
+				ft_check_3(map, p_tempcrs, p_info);
 			p_tempcrs->col++;
 		}
 		p_tempcrs->row++;
 	}
-	ft_change_map(map, p_map_info);
-	ft_put_map(map, p_map_info);
+	change_map(map, p_info);
 	free(p_tempcrs);
 	return ;
 }

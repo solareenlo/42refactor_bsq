@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 11:35:16 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 13:37:47 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,11 @@ static int	validate_char_of_map(char **map, t_map_info *info)
 static int	validate_col_and_row_of_map(char **map, t_map_info *info)
 {
 	int	i;
-	int	len;
 
 	i = 1;
-	len = ft_strlen(map[i]);
 	while (map[i])
 	{
-		if (len != ft_strlen(map[i]))
+		if (info->cols != ft_strlen(map[i]))
 			return (FAIL);
 		i++;
 	}

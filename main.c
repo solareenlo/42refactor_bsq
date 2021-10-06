@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 11:09:00 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 13:48:19 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int			ft_main_1(void)
 		return (FAIL);
 	}
 	ft_make_map(map, map_info);
+	ft_put_map(map, map_info);
 	free_map(&map);
 	free(map_info);
 	return (SUCCESS);
@@ -118,6 +119,7 @@ int			ft_main_2(int argc, char *argv[], int i)
 		return (FAIL);
 	}
 	ft_make_map(map, map_info);
+	ft_put_map(map, map_info);
 	if (!(i + 1 == argc))
 		ft_putstr((char *)"\n");
 	free_map(&map);
