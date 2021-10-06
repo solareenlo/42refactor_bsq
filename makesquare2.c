@@ -6,13 +6,13 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:43:41 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:54:18 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-extern int	g_max;
+extern int	g_max_size;
 extern int	g_col;
 extern int	g_row;
 
@@ -48,9 +48,9 @@ void		ft_check_3(char **map, t_tempcrs *p_tempcrs, t_map_info *p_info)
 	p_tempcrs->max_size = 0;
 	while (ft_check_2(map, p_tempcrs, p_info) == 1)
 		p_tempcrs->max_size++;
-	if (g_max < p_tempcrs->max_size)
+	if (g_max_size < p_tempcrs->max_size)
 	{
-		g_max = p_tempcrs->max_size;
+		g_max_size = p_tempcrs->max_size;
 		g_col = p_tempcrs->col;
 		g_row = p_tempcrs->row;
 	}
@@ -81,10 +81,10 @@ static void	change_map(char **map, t_map_info *p_info)
 	int	col;
 
 	row = 0;
-	while (row < g_max)
+	while (row < g_max_size)
 	{
 		col = 0;
-		while (col < g_max)
+		while (col < g_max_size)
 		{
 			map[g_row + row][g_col + col] = p_info->full;
 			col++;
@@ -98,7 +98,7 @@ void		ft_make_map(char **map, t_map_info *p_info)
 {
 	t_tempcrs	*p_tempcrs;
 
-	g_max = 0;
+	g_max_size = 0;
 	g_col = 0;
 	g_row = 0;
 	p_tempcrs = (t_tempcrs *)malloc(sizeof(t_tempcrs));

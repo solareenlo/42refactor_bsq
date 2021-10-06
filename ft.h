@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:45:42 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:54:14 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct	s_tempcrs
 	int			max_size;
 }				t_tempcrs;
 
-int				g_max;
+int				g_max_size;
 int				g_col;
 int				g_row;
 void			ft_putchar(char c);

@@ -6,13 +6,13 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 14:45:44 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 14:54:16 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-extern int	g_max;
+extern int	g_max_size;
 extern int	g_col;
 extern int	g_row;
 
@@ -48,5 +48,5 @@ void		ft_set_bsq(t_bsq *p_bsq)
 {
 	p_bsq->x = g_col;
 	p_bsq->y = g_row;
-	p_bsq->max_size = g_max;
+	p_bsq->max_size = g_max_size;
 }
