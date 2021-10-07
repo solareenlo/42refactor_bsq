@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 18:22:09 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:29:06 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,20 @@ static t_bool	extend_square(char **map, t_square *p_square, t_map_info *p_info)
 	int	i;
 
 	i = 0;
-	while (i <= p_square->max_size)
+	while (i <= p_square->size)
 	{
-		if (ft_is_empty_char(map,
-								p_square->col + i,
-								p_square->row + p_square->max_size,
-								p_info) == FALSE)
+		if (ft_is_empty_char(
+				map, p_square->col0 + i, p_square->row0 + p_square->size, p_info) ==
+			FALSE)
 			return (FALSE);
 		i++;
 	}
 	i = 0;
-	while (i <= p_square->max_size)
+	while (i <= p_square->size)
 	{
-		if (ft_is_empty_char(map,
-								p_square->col + p_square->max_size,
-								p_square->row + i,
-								p_info) == FALSE)
+		if (ft_is_empty_char(
+				map, p_square->col0 + p_square->size, p_square->row0 + i, p_info) ==
+			FALSE)
 			return (FALSE);
 		i++;
 	}
@@ -86,14 +84,14 @@ static void		make_biggest_square_info(char **map,
 										t_square *p_square,
 										t_map_info *p_info)
 {
-	p_square->max_size = 0;
+	p_square->size = 0;
 	while (extend_square(map, p_square, p_info) == TRUE)
-		p_square->max_size++;
-	if (g_size_biggest_square < p_square->max_size)
+		p_square->size++;
+	if (g_size_biggest_square < p_square->size)
 	{
-		g_size_biggest_square = p_square->max_size;
-		g_col0_biggest_square = p_square->col;
-		g_row0_biggest_square = p_square->row;
+		g_size_biggest_square = p_square->size;
+		g_col0_biggest_square = p_square->col0;
+		g_row0_biggest_square = p_square->row0;
 	}
 }
 
@@ -108,17 +106,17 @@ void			ft_make_biggest_square(char **map, t_map_info *p_info)
 	if (p_square == NULL)
 		return ;
 	ft_init_square(p_square);
-	while (p_square->row <= p_info->rows)
+	while (p_square->row0 <= p_info->rows)
 	{
-		p_square->col = 0;
-		while (p_square->col < p_info->cols)
+		p_square->col0 = 0;
+		while (p_square->col0 < p_info->cols)
 		{
-			if (ft_is_empty_char(map, p_square->col, p_square->row, p_info) ==
+			if (ft_is_empty_char(map, p_square->col0, p_square->row0, p_info) ==
 				TRUE)
 				make_biggest_square_info(map, p_square, p_info);
-			p_square->col++;
+			p_square->col0++;
 		}
-		p_square->row++;
+		p_square->row0++;
 	}
 	free(p_square);
 	return ;

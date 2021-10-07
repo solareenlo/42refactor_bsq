@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:51:29 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 18:22:07 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:28:13 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 typedef struct	s_square
 {
-	int			col;
-	int			row;
-	int			max_size;
+	int			col0;
+	int			row0;
+	int			size;
 }				t_square;
 
 int				g_size_biggest_square;
