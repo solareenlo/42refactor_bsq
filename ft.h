@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 17:05:31 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 17:37:15 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include "ft_atoi.h"
 # include "ft_map_info.h"
+# include "ft_puts.h"
 # include "ft_split.h"
 # include "ft_str.h"
 # include "ft_utility.h"
+# include "ft_validate_map.h"
 # include "makesquare.h"
 # include <fcntl.h>
 # include <libgen.h>
@@ -31,12 +33,8 @@
 # define STDOUT 1
 # define STDERR 2
 
-int		g_max_size;
-int		g_col;
-int		g_row;
-void	ft_putchar(char c);
-void	ft_putstr(char *str);
-void	ft_puterror(char *str);
-int		ft_validate_map(char **map, t_map_info *info);
+int	g_max_size;
+int	g_col;
+int	g_row;
 
 #endif

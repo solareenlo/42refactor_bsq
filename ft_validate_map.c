@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 16:01:40 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 17:35:16 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "ft_validate_map.h"
 
 static int	validate_exist_of_map(char **map, t_map_info *info)
 {

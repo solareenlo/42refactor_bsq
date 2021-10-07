@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:46:13 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 11:32:31 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 17:32:38 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "ft_puts.h"
 
 void	ft_putchar(char c)
 {
