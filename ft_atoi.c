@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 18:51:43 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/05 18:42:26 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:05:12 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "ft_atoi.h"
 
 int	ft_atoi(char *str)
 {

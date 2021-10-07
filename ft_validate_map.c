@@ -6,21 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 13:37:47 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:01:40 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-
-t_bool		ft_is_last_char_a_line_break(char *content)
-{
-	int	len;
-
-	len = ft_strlen(content);
-	if (content[len - 1] != '\n')
-		return (FALSE);
-	return (TRUE);
-}
 
 static int	validate_exist_of_map(char **map, t_map_info *info)
 {

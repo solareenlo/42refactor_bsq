@@ -6,11 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 17:54:58 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:10:37 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "ft_utility.h"
 
 t_bool	ft_is_printable(char c)
 {
@@ -34,4 +34,16 @@ t_bool	ft_isdigit(char c)
 	if ('0' <= c && c <= '9')
 		return (TRUE);
 	return (FALSE);
+}
+
+t_bool	ft_is_last_char_a_line_break(char *line)
+{
+	int	len;
+
+	if (!line)
+		return (FALSE);
+	len = ft_strlen(line);
+	if (line[len - 1] != '\n')
+		return (FALSE);
+	return (TRUE);
 }

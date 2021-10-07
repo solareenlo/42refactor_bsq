@@ -6,11 +6,11 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 17:53:49 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/06 17:55:02 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:10:02 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "ft_str.h"
 
 int		ft_strlen(char *str)
 {
