@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 17:17:59 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:02:52 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_bool	extend_square(char **map, t_square *p_square, t_map_info *p_info)
 	return (TRUE);
 }
 
-static void		find_biggest_square_info(char **map,
+static void		make_biggest_square_info(char **map,
 										t_square *p_square,
 										t_map_info *p_info)
 {
@@ -96,7 +96,7 @@ static void		find_biggest_square_info(char **map,
 	}
 }
 
-void			ft_find_biggest_square(char **map, t_map_info *p_info)
+void			ft_make_biggest_square(char **map, t_map_info *p_info)
 {
 	t_square	*p_square;
 
@@ -114,7 +114,7 @@ void			ft_find_biggest_square(char **map, t_map_info *p_info)
 		{
 			if (ft_is_empty_char(map, p_square->col, p_square->row, p_info) ==
 				TRUE)
-				find_biggest_square_info(map, p_square, p_info);
+				make_biggest_square_info(map, p_square, p_info);
 			p_square->col++;
 		}
 		p_square->row++;

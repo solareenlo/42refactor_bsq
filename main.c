@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 17:53:28 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:02:51 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	bsq(int ifd)
 		free(map_info);
 		return (FAIL);
 	}
-	ft_find_biggest_square(map, map_info);
+	ft_make_biggest_square(map, map_info);
 	ft_write_biggest_square(map, map_info);
 	ft_put_map(map, map_info);
 	ft_free_split(&map);
