@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:51:29 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 18:02:49 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:22:07 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ typedef struct	s_square
 	int			max_size;
 }				t_square;
 
-int				g_max_size;
-int				g_col;
-int				g_row;
+int				g_size_biggest_square;
+int				g_col0_biggest_square;
+int				g_row0_biggest_square;
 
 void			ft_put_map(char **map, t_map_info *p_info);
 void			ft_write_biggest_square(char **map, t_map_info *p_info);

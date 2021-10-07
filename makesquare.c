@@ -6,15 +6,15 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 18:02:52 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:22:09 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "makesquare.h"
 
-extern int		g_max_size;
-extern int		g_col;
-extern int		g_row;
+extern int		g_size_biggest_square;
+extern int		g_col0_biggest_square;
+extern int		g_row0_biggest_square;
 
 void			ft_put_map(char **map, t_map_info *p_info)
 {
@@ -41,12 +41,13 @@ void			ft_write_biggest_square(char **map, t_map_info *p_info)
 	int	col;
 
 	row = 0;
-	while (row < g_max_size)
+	while (row < g_size_biggest_square)
 	{
 		col = 0;
-		while (col < g_max_size)
+		while (col < g_size_biggest_square)
 		{
-			map[g_row + row][g_col + col] = p_info->full;
+			map[g_row0_biggest_square + row][g_col0_biggest_square + col] =
+				p_info->full;
 			col++;
 		}
 		row++;
@@ -88,11 +89,11 @@ static void		make_biggest_square_info(char **map,
 	p_square->max_size = 0;
 	while (extend_square(map, p_square, p_info) == TRUE)
 		p_square->max_size++;
-	if (g_max_size < p_square->max_size)
+	if (g_size_biggest_square < p_square->max_size)
 	{
-		g_max_size = p_square->max_size;
-		g_col = p_square->col;
-		g_row = p_square->row;
+		g_size_biggest_square = p_square->max_size;
+		g_col0_biggest_square = p_square->col;
+		g_row0_biggest_square = p_square->row;
 	}
 }
 
@@ -100,9 +101,9 @@ void			ft_make_biggest_square(char **map, t_map_info *p_info)
 {
 	t_square	*p_square;
 
-	g_max_size = 0;
-	g_col = 0;
-	g_row = 0;
+	g_size_biggest_square = 0;
+	g_col0_biggest_square = 0;
+	g_row0_biggest_square = 0;
 	p_square = (t_square *)malloc(sizeof(t_square));
 	if (p_square == NULL)
 		return ;
