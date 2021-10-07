@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   makesquare.c                                       :+:      :+:    :+:   */
+/*   ft_make_square.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 21:33:28 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:39:02 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "makesquare.h"
+#include "ft_make_square.h"
 
 extern int		g_size_biggest_square;
 extern int		g_col0_biggest_square;

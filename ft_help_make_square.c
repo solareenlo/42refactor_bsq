@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpmakesquare.c                                   :+:      :+:    :+:   */
+/*   ft_help_make_square.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 21:33:31 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:40:31 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "makesquare.h"
+#include "ft_make_square.h"
 
 void	ft_init_square(t_square *p_square)
 {

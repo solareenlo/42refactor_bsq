@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   makesquare.h                                       :+:      :+:    :+:   */
+/*   ft_make_square.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:51:29 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 21:33:44 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:39:19 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
-#ifndef MAKESQUARE_H
-# define MAKESQUARE_H
+#ifndef FT_MAKE_SQUARE_H
+# define FT_MAKE_SQUARE_H
 
 # include "ft_map_info.h"
 # include "ft_str.h"
