@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 21:13:27 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:33:28 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,6 @@
 extern int		g_size_biggest_square;
 extern int		g_col0_biggest_square;
 extern int		g_row0_biggest_square;
-
-void			ft_put_map(char **map, t_map_info *map_info)
-{
-	int	row;
-	int	col;
-
-	row = 1;
-	while (row <= map_info->rows)
-	{
-		col = 0;
-		while (col < map_info->cols)
-		{
-			write(1, &map[row][col], 1);
-			col++;
-		}
-		write(1, "\n", 1);
-		row++;
-	}
-}
-
-void			ft_write_biggest_square(char **map, t_map_info *map_info)
-{
-	int	row;
-	int	col;
-
-	row = 0;
-	while (row < g_size_biggest_square)
-	{
-		col = 0;
-		while (col < g_size_biggest_square)
-		{
-			map[g_row0_biggest_square + row][g_col0_biggest_square + col] =
-				map_info->full;
-			col++;
-		}
-		row++;
-	}
-	return ;
-}
 
 static t_bool	extend_square(char **map, t_square *square, t_map_info *map_info)
 {

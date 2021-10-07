@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:51:29 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 18:28:13 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:33:44 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -28,11 +28,10 @@ int				g_size_biggest_square;
 int				g_col0_biggest_square;
 int				g_row0_biggest_square;
 
-void			ft_put_map(char **map, t_map_info *p_info);
-void			ft_write_biggest_square(char **map, t_map_info *p_info);
 void			ft_make_biggest_square(char **map, t_map_info *p_info);
 
 void			ft_init_square(t_square *p_square);
 t_bool			ft_is_empty_char(char **map, int col, int row, t_map_info *p_info);
+void			ft_write_biggest_square(char **map, t_map_info *p_info);
 
 #endif

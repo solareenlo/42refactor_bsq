@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 20:09:31 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:32:52 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_atoi.h"
 # include "ft_free.h"
 # include "ft_map_info.h"
+# include "ft_put_map.h"
 # include "ft_puts.h"
 # include "ft_split.h"
 # include "ft_str.h"
