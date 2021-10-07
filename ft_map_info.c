@@ -6,13 +6,13 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 18:26:03 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:51:47 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_map_info.h"
 
-static t_bool	is_valid_number_of_line(char *first_line, int len)
+static t_bool	is_valid_map_rows(char *first_line, int len)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ static t_bool	is_valid_number_of_line(char *first_line, int len)
 		return (FALSE);
 	i = -1;
 	while (++i < len - 3)
-		if (ft_isdigit(first_line[i]) == FALSE)
+		if (!ft_isdigit(first_line[i]))
 			return (FALSE);
 	return (TRUE);
 }
@@ -53,7 +53,7 @@ int				ft_validate_map_info(char **map)
 	len = ft_strlen(map[0]);
 	if (len < 4)
 		return (FAIL);
-	if (is_valid_number_of_line(map[0], len) == FALSE)
+	if (is_valid_map_rows(map[0], len) == FALSE)
 		return (FAIL);
 	if (is_valid_map_info_chars(&map[0][len - 3]) == FALSE)
 		return (FAIL);
@@ -73,19 +73,19 @@ int				ft_get_map_cols(char **map)
 static int		get_map_rows(char *first_line, int len)
 {
 	int		i;
-	char	*number_of_lines;
-	int		rows;
+	char	*rows;
+	int		map_rows;
 
-	number_of_lines = (char *)malloc(sizeof(char) * (len - 3) + 1);
-	if (number_of_lines == NULL)
+	rows = (char *)malloc(sizeof(char) * (len - 3) + 1);
+	if (rows == NULL)
 		return (-1);
 	i = -1;
 	while (++i < len - 3)
-		number_of_lines[i] = first_line[i];
-	number_of_lines[i] = '\0';
-	rows = ft_atoi(number_of_lines);
-	free(number_of_lines);
-	return (rows);
+		rows[i] = first_line[i];
+	rows[i] = '\0';
+	map_rows = ft_atoi(rows);
+	free(rows);
+	return (map_rows);
 }
 
 t_map_info		*ft_parse_map_info(char **map)

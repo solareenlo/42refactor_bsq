@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 17:52:50 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:56:27 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ char		**ft_split(char *str, char *charset)
 	int		i;
 	int		j;
 
+	if (!str || !charset)
+		return (NULL);
 	res = (char **)malloc(sizeof(char *) * (get_wc(str, charset) + 1));
 	if (!res)
 		return (NULL);

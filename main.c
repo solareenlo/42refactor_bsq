@@ -6,20 +6,22 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 18:02:51 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:38:36 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-static char	*read_to_eof(int ifd)
+static char	*read_to_eof(int fd)
 {
 	char	*content;
 	char	buf[FT_BUFSIZ + 1];
 	int		n;
 
+	if (fd < 0 || read(fd, buf, 0) < 0 || FT_BUFSIZ < 0)
+		return (NULL);
 	content = NULL;
-	while ((n = read(ifd, buf, FT_BUFSIZ)) > 0)
+	while ((n = read(fd, buf, FT_BUFSIZ)) > 0)
 	{
 		buf[n] = '\0';
 		if (content == NULL)
@@ -30,15 +32,13 @@ static char	*read_to_eof(int ifd)
 	return (content);
 }
 
-static int	bsq(int ifd)
+static int	bsq(int fd)
 {
 	char		*content;
 	char		**map;
 	t_map_info	*map_info;
 
-	if (ifd < 0)
-		return (FAIL);
-	content = read_to_eof(ifd);
+	content = read_to_eof(fd);
 	if (ft_is_last_char_a_line_break(content) == FALSE)
 	{
 		free(content);
