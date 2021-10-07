@@ -6,27 +6,11 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 15:30:20 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 17:53:28 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
-
-static void	free_split(char ***split)
-{
-	size_t	i;
-
-	if (!split || !*split)
-		return ;
-	i = 0;
-	while ((*split)[i])
-	{
-		free((*split)[i]);
-		i++;
-	}
-	free(*split);
-	*split = NULL;
-}
 
 static char	*read_to_eof(int ifd)
 {
@@ -64,25 +48,25 @@ static int	bsq(int ifd)
 	free(content);
 	if (ft_validate_map_info(map) == FAIL)
 	{
-		free_split(&map);
+		ft_free_split(&map);
 		return (FAIL);
 	}
 	map_info = ft_parse_map_info(map);
 	if (map_info == NULL)
 	{
-		free_split(&map);
+		ft_free_split(&map);
 		return (FAIL);
 	}
 	if (ft_validate_map(map, map_info) == FAIL)
 	{
-		free_split(&map);
+		ft_free_split(&map);
 		free(map_info);
 		return (FAIL);
 	}
 	ft_find_biggest_square(map, map_info);
 	ft_write_biggest_square(map, map_info);
 	ft_put_map(map, map_info);
-	free_split(&map);
+	ft_free_split(&map);
 	free(map_info);
 	return (SUCCESS);
 }

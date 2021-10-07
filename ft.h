@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 17:37:15 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 17:48:45 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,5 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
-
-int	g_max_size;
-int	g_col;
-int	g_row;
 
 #endif
