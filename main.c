@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 18:04:45 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/06 18:20:33 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int			main(int argc, char *argv[])
 			ifd = open(argv[i], O_RDONLY);
 			if (main_1(ifd) == FAIL)
 				ft_puterror((char *)FT_ERR_MAP);
-			if (!(i + 1 == argc))
+			if (i + 1 != argc)
 				ft_putstr((char *)"\n");
 		}
 	}

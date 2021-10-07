@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 18:17:24 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 15:18:53 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ typedef struct	s_map_info
 	char		full;
 }				t_map_info;
 
-typedef struct	s_tempcrs
+typedef struct	s_square
 {
 	int			col;
 	int			row;
 	int			max_size;
-}				t_tempcrs;
+}				t_square;
 
 int				g_max_size;
 int				g_col;
@@ -66,7 +66,7 @@ int				ft_validate_map_info(char **map);
 t_map_info		*ft_parse_map_info(char **map);
 int				ft_validate_map(char **map, t_map_info *info);
 t_bool			ft_is_last_char_a_line_break(char *content);
-void			ft_set_tempcrs(t_tempcrs *p_tempcrs);
+void			ft_init_square(t_square *p_square);
 t_bool			ft_is_empty_char(char **map, int col, int row, t_map_info *p_info);
 void			ft_find_biggest_square(char **map, t_map_info *p_info);
 void			ft_write_biggest_square(char **map, t_map_info *p_info);

@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 18:17:34 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 15:18:55 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int			ft_get_map_cols(char **map)
 	return (col);
 }
 
-void		ft_set_tempcrs(t_tempcrs *p_tempcrs)
+void		ft_init_square(t_square *p_square)
 {
-	p_tempcrs->row = 1;
-	p_tempcrs->col = 0;
-	p_tempcrs->max_size = 0;
+	p_square->row = 1;
+	p_square->col = 0;
+	p_square->max_size = 0;
 }
 
 t_bool		ft_is_empty_char(char **map, int col, int row, t_map_info *p_info)
