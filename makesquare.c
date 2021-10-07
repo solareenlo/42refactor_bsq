@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 18:29:06 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:13:27 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ extern int		g_size_biggest_square;
 extern int		g_col0_biggest_square;
 extern int		g_row0_biggest_square;
 
-void			ft_put_map(char **map, t_map_info *p_info)
+void			ft_put_map(char **map, t_map_info *map_info)
 {
 	int	row;
 	int	col;
 
 	row = 1;
-	while (row <= p_info->rows)
+	while (row <= map_info->rows)
 	{
 		col = 0;
-		while (col < p_info->cols)
+		while (col < map_info->cols)
 		{
 			write(1, &map[row][col], 1);
 			col++;
@@ -35,7 +35,7 @@ void			ft_put_map(char **map, t_map_info *p_info)
 	}
 }
 
-void			ft_write_biggest_square(char **map, t_map_info *p_info)
+void			ft_write_biggest_square(char **map, t_map_info *map_info)
 {
 	int	row;
 	int	col;
@@ -47,7 +47,7 @@ void			ft_write_biggest_square(char **map, t_map_info *p_info)
 		while (col < g_size_biggest_square)
 		{
 			map[g_row0_biggest_square + row][g_col0_biggest_square + col] =
-				p_info->full;
+				map_info->full;
 			col++;
 		}
 		row++;
@@ -55,24 +55,24 @@ void			ft_write_biggest_square(char **map, t_map_info *p_info)
 	return ;
 }
 
-static t_bool	extend_square(char **map, t_square *p_square, t_map_info *p_info)
+static t_bool	extend_square(char **map, t_square *square, t_map_info *map_info)
 {
 	int	i;
 
 	i = 0;
-	while (i <= p_square->size)
+	while (i <= square->size)
 	{
 		if (ft_is_empty_char(
-				map, p_square->col0 + i, p_square->row0 + p_square->size, p_info) ==
+				map, square->col0 + i, square->row0 + square->size, map_info) ==
 			FALSE)
 			return (FALSE);
 		i++;
 	}
 	i = 0;
-	while (i <= p_square->size)
+	while (i <= square->size)
 	{
 		if (ft_is_empty_char(
-				map, p_square->col0 + p_square->size, p_square->row0 + i, p_info) ==
+				map, square->col0 + square->size, square->row0 + i, map_info) ==
 			FALSE)
 			return (FALSE);
 		i++;
@@ -81,43 +81,43 @@ static t_bool	extend_square(char **map, t_square *p_square, t_map_info *p_info)
 }
 
 static void		make_biggest_square_info(char **map,
-										t_square *p_square,
-										t_map_info *p_info)
+										t_square *square,
+										t_map_info *map_info)
 {
-	p_square->size = 0;
-	while (extend_square(map, p_square, p_info) == TRUE)
-		p_square->size++;
-	if (g_size_biggest_square < p_square->size)
+	square->size = 0;
+	while (extend_square(map, square, map_info) == TRUE)
+		square->size++;
+	if (g_size_biggest_square < square->size)
 	{
-		g_size_biggest_square = p_square->size;
-		g_col0_biggest_square = p_square->col0;
-		g_row0_biggest_square = p_square->row0;
+		g_size_biggest_square = square->size;
+		g_col0_biggest_square = square->col0;
+		g_row0_biggest_square = square->row0;
 	}
 }
 
-void			ft_make_biggest_square(char **map, t_map_info *p_info)
+void			ft_make_biggest_square(char **map, t_map_info *map_info)
 {
-	t_square	*p_square;
+	t_square	*square;
 
 	g_size_biggest_square = 0;
 	g_col0_biggest_square = 0;
 	g_row0_biggest_square = 0;
-	p_square = (t_square *)malloc(sizeof(t_square));
-	if (p_square == NULL)
+	square = (t_square *)malloc(sizeof(t_square));
+	if (square == NULL)
 		return ;
-	ft_init_square(p_square);
-	while (p_square->row0 <= p_info->rows)
+	ft_init_square(square);
+	while (square->row0 <= map_info->rows)
 	{
-		p_square->col0 = 0;
-		while (p_square->col0 < p_info->cols)
+		square->col0 = 0;
+		while (square->col0 < map_info->cols)
 		{
-			if (ft_is_empty_char(map, p_square->col0, p_square->row0, p_info) ==
+			if (ft_is_empty_char(map, square->col0, square->row0, map_info) ==
 				TRUE)
-				make_biggest_square_info(map, p_square, p_info);
-			p_square->col0++;
+				make_biggest_square_info(map, square, map_info);
+			square->col0++;
 		}
-		p_square->row0++;
+		square->row0++;
 	}
-	free(p_square);
+	free(square);
 	return ;
 }

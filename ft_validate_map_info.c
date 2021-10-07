@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 20:25:28 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 20:25:56 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:52:40 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ static t_bool	is_valid_map_rows(char *first_line, int len)
 
 static t_bool	is_valid_map_info_chars(char *chars)
 {
+	int		len;
 	char	empty;
 	char	obstacle;
 	char	full;
 
 	if (!chars)
+		return (FALSE);
+	len = ft_strlen(chars);
+	if (len != 3)
 		return (FALSE);
 	empty = chars[0];
 	obstacle = chars[1];

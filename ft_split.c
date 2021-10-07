@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:55:41 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 20:05:59 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:48:41 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static size_t	cnt_word(char const *s, char c)
 	return (cnt);
 }
 
-static void		str_cpy(char *dst, const char **src, const char c)
+static void		copy_str(char *dst, const char **src, const char c)
 {
 	char	*d;
 
@@ -92,7 +92,7 @@ char			**ft_split(char const *s, char c)
 		*strs = (char *)malloc(sizeof(char) * (str_len(s, c) + 1));
 		if (*strs == NULL)
 			return (free_and_return_null(strs, i));
-		str_cpy(*strs, &s, c);
+		copy_str(*strs, &s, c);
 		strs++;
 	}
 	*strs = NULL;

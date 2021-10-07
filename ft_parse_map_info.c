@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_info.c                                      :+:      :+:    :+:   */
+/*   ft_parse_map_info.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 20:25:41 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:55:35 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static int	get_map_rows(char *first_line, int len)
 	char	*rows;
 	int		map_rows;
 
-	rows = (char *)malloc(sizeof(char) * (len - 3) + 1);
+	rows = (char *)malloc(sizeof(char) * len + 1);
 	if (rows == NULL)
 		return (-1);
 	i = -1;
-	while (++i < len - 3)
+	while (++i < len)
 		rows[i] = first_line[i];
 	rows[i] = '\0';
 	map_rows = ft_atoi(rows);
@@ -49,7 +49,7 @@ t_map_info	*ft_parse_map_info(char **map)
 	if (map_info == NULL)
 		return (NULL);
 	len = ft_strlen(map[0]);
-	map_info->rows = get_map_rows(map[0], len);
+	map_info->rows = get_map_rows(map[0], len - 3);
 	if (map_info->rows < 0)
 	{
 		free(map_info);

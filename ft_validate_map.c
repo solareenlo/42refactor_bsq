@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:48:35 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 17:35:16 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:04:00 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ static int	validate_exist_of_map(char **map, t_map_info *info)
 
 static int	validate_char_of_map(char **map, t_map_info *info)
 {
-	int	i;
-	int	j;
+	int	row;
+	int	col;
 
-	i = 0;
-	while (map[++i])
+	row = 0;
+	while (map[++row])
 	{
-		j = -1;
-		while (map[i][++j])
+		col = -1;
+		while (map[row][++col])
 		{
-			if (!(map[i][j] == info->empty || map[i][j] == info->obstacle))
+			if (!(map[row][col] == info->empty || map[row][col] == info->obstacle))
 				return (FAIL);
 		}
 	}
@@ -42,16 +42,16 @@ static int	validate_char_of_map(char **map, t_map_info *info)
 
 static int	validate_col_and_row_of_map(char **map, t_map_info *info)
 {
-	int	i;
+	int	row;
 
-	i = 1;
-	while (map[i])
+	row = 1;
+	while (map[row])
 	{
-		if (info->cols != ft_strlen(map[i]))
+		if (info->cols != ft_strlen(map[row]))
 			return (FAIL);
-		i++;
+		row++;
 	}
-	if (i - 1 != info->rows)
+	if (row - 1 != info->rows)
 		return (FAIL);
 	return (SUCCESS);
 }
