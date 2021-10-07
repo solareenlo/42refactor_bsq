@@ -6,24 +6,26 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 18:20:33 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 15:30:20 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
 
-void		free_map(char ***map)
+static void	free_split(char ***split)
 {
-	long int	i;
+	size_t	i;
 
+	if (!split || !*split)
+		return ;
 	i = 0;
-	while ((*map)[i])
+	while ((*split)[i])
 	{
-		free((*map)[i]);
+		free((*split)[i]);
 		i++;
 	}
-	free(*map);
-	*map = NULL;
+	free(*split);
+	*split = NULL;
 }
 
 static char	*read_to_eof(int ifd)
@@ -44,7 +46,7 @@ static char	*read_to_eof(int ifd)
 	return (content);
 }
 
-static int	main_1(int ifd)
+static int	bsq(int ifd)
 {
 	char		*content;
 	char		**map;
@@ -62,25 +64,25 @@ static int	main_1(int ifd)
 	free(content);
 	if (ft_validate_map_info(map) == FAIL)
 	{
-		free_map(&map);
+		free_split(&map);
 		return (FAIL);
 	}
 	map_info = ft_parse_map_info(map);
 	if (map_info == NULL)
 	{
-		free_map(&map);
+		free_split(&map);
 		return (FAIL);
 	}
 	if (ft_validate_map(map, map_info) == FAIL)
 	{
-		free_map(&map);
+		free_split(&map);
 		free(map_info);
 		return (FAIL);
 	}
 	ft_find_biggest_square(map, map_info);
 	ft_write_biggest_square(map, map_info);
 	ft_put_map(map, map_info);
-	free_map(&map);
+	free_split(&map);
 	free(map_info);
 	return (SUCCESS);
 }
@@ -92,7 +94,7 @@ int			main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
-		if (main_1(STDIN) == FAIL)
+		if (bsq(STDIN) == FAIL)
 			ft_puterror((char *)FT_ERR_MAP);
 	}
 	else
@@ -101,7 +103,7 @@ int			main(int argc, char *argv[])
 		while (++i < argc)
 		{
 			ifd = open(argv[i], O_RDONLY);
-			if (main_1(ifd) == FAIL)
+			if (bsq(ifd) == FAIL)
 				ft_puterror((char *)FT_ERR_MAP);
 			if (i + 1 != argc)
 				ft_putstr((char *)"\n");
