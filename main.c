@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 20:16:04 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:38:21 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ static char	*read_to_eof(int fd)
 	if (fd < 0 || read(fd, buf, 0) < 0 || FT_BUFSIZ < 0)
 		return (NULL);
 	content = NULL;
-	while ((n = read(fd, buf, FT_BUFSIZ)) > 0)
+	while (42)
 	{
+		n = read(fd, buf, FT_BUFSIZ);
+		if (n <= 0)
+			break ;
 		buf[n] = '\0';
 		if (content == NULL)
 			content = ft_strdup(buf);
@@ -75,18 +78,16 @@ int			main(int argc, char *argv[])
 	{
 		if (bsq(STDIN) == FAIL)
 			ft_puterror((char *)FT_ERR_MAP);
+		return (0);
 	}
-	else
+	i = 0;
+	while (++i < argc)
 	{
-		i = 0;
-		while (++i < argc)
-		{
-			ifd = open(argv[i], O_RDONLY);
-			if (bsq(ifd) == FAIL)
-				ft_puterror((char *)FT_ERR_MAP);
-			if (i + 1 != argc)
-				ft_putstr((char *)"\n");
-		}
+		ifd = open(argv[i], O_RDONLY);
+		if (bsq(ifd) == FAIL)
+			ft_puterror((char *)FT_ERR_MAP);
+		if (i + 1 != argc)
+			ft_putstr((char *)"\n");
 	}
 	return (0);
 }
