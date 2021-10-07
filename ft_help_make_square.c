@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 21:40:31 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 22:20:24 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,23 @@ t_bool	ft_is_empty_char(char **map, int col, int row, t_map_info *p_info)
 
 void	ft_write_biggest_square(char **map, t_map_info *map_info)
 {
+	int	i;
+	int	j;
 	int	row;
 	int	col;
 
-	row = 0;
-	while (row < g_size_biggest_square)
+	j = 0;
+	while (j < g_size_biggest_square)
 	{
-		col = 0;
-		while (col < g_size_biggest_square)
+		i = 0;
+		while (i < g_size_biggest_square)
 		{
-			map[g_row0_biggest_square + row][g_col0_biggest_square + col] =
-				map_info->full;
-			col++;
+			col = g_col0_biggest_square + i;
+			row = g_row0_biggest_square + j;
+			map[row][col] = map_info->full;
+			i++;
 		}
-		row++;
+		j++;
 	}
 	return ;
 }
