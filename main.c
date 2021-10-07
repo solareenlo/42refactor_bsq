@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 18:38:36 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 19:40:24 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ static char	*read_to_eof(int fd)
 	return (content);
 }
 
+t_bool		free_and_return_fail(char *str, char **map, t_map_info *map_info)
+{
+	free(str);
+	ft_free_split(&map);
+	free(map_info);
+	return (FAIL);
+}
+
 static int	bsq(int fd)
 {
 	char		*content;
@@ -40,29 +48,16 @@ static int	bsq(int fd)
 
 	content = read_to_eof(fd);
 	if (ft_is_last_char_a_line_break(content) == FALSE)
-	{
-		free(content);
-		return (FAIL);
-	}
+		return (free_and_return_fail(content, NULL, NULL));
 	map = ft_split(content, (char *)"\n");
 	free(content);
 	if (ft_validate_map_info(map) == FAIL)
-	{
-		ft_free_split(&map);
-		return (FAIL);
-	}
+		return (free_and_return_fail(NULL, map, NULL));
 	map_info = ft_parse_map_info(map);
 	if (map_info == NULL)
-	{
-		ft_free_split(&map);
-		return (FAIL);
-	}
+		return (free_and_return_fail(NULL, map, NULL));
 	if (ft_validate_map(map, map_info) == FAIL)
-	{
-		ft_free_split(&map);
-		free(map_info);
-		return (FAIL);
-	}
+		return (free_and_return_fail(NULL, map, map_info));
 	ft_make_biggest_square(map, map_info);
 	ft_write_biggest_square(map, map_info);
 	ft_put_map(map, map_info);
