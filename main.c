@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 20:38:21 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 23:37:27 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	bsq(int fd)
 int			main(int argc, char *argv[])
 {
 	int	i;
-	int	ifd;
+	int	fd;
 
 	if (argc < 2)
 	{
@@ -83,8 +83,8 @@ int			main(int argc, char *argv[])
 	i = 0;
 	while (++i < argc)
 	{
-		ifd = open(argv[i], O_RDONLY);
-		if (bsq(ifd) == FAIL)
+		fd = open(argv[i], O_RDONLY);
+		if (bsq(fd) == FAIL)
 			ft_puterror((char *)FT_ERR_MAP);
 		if (i + 1 != argc)
 			ft_putstr((char *)"\n");
