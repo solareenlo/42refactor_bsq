@@ -6,15 +6,15 @@
 #    By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/28 13:12:23 by louisnop          #+#    #+#              #
-#    Updated: 2021/10/07 19:28:12 by tayamamo         ###   ########.fr        #
+#    Updated: 2021/10/07 20:29:42 by tayamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC      = gcc
 CFLAGS  = -Wall -Wextra -Werror
 TARGET  = bsq
-SRC = main.c ft_puts.c ft_utility.c ft_str.c ft_split.c ft_atoi.c ft_map_info.c ft_validate_map.c makesquare.c helpmakesquare.c ft_free.c
-OBJ = main.o ft_puts.o ft_utility.o ft_str.o ft_split.o ft_atoi.o ft_map_info.o ft_validate_map.o makesquare.o helpmakesquare.o ft_free.o
+SRC = main.c ft_puts.c ft_utility.c ft_str.c ft_split.c ft_atoi.c ft_parse_map_info.c ft_validate_map.c ft_validate_map_info.c makesquare.c helpmakesquare.c ft_free.c
+OBJ = main.o ft_puts.o ft_utility.o ft_str.o ft_split.o ft_atoi.o ft_parse_map_info.o ft_validate_map.o ft_validate_map_info.o makesquare.o helpmakesquare.o ft_free.o
 SRC_DIR = ./
 OBJ_DIR = obj
 SRCS    = $(addprefix $(SRC_DIR)/, $(SRC))

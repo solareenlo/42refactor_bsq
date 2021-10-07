@@ -6,61 +6,13 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 19:10:44 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:25:41 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_map_info.h"
 
-static t_bool	is_valid_map_rows(char *first_line, int len)
-{
-	int	i;
-
-	if (!first_line)
-		return (FALSE);
-	i = -1;
-	while (++i < len - 3)
-		if (!ft_isdigit(first_line[i]))
-			return (FALSE);
-	return (TRUE);
-}
-
-static t_bool	is_valid_map_info_chars(char *chars)
-{
-	char	empty;
-	char	obstacle;
-	char	full;
-
-	if (!chars)
-		return (FALSE);
-	empty = chars[0];
-	obstacle = chars[1];
-	full = chars[2];
-	if (!ft_is_printable(empty) || !ft_is_printable(obstacle) ||
-		!ft_is_printable(full))
-		return (FALSE);
-	if (empty == obstacle || obstacle == full || full == empty)
-		return (FALSE);
-	return (TRUE);
-}
-
-int				ft_validate_map_info(char **map)
-{
-	int	len;
-
-	if (!map || !map[0])
-		return (FAIL);
-	len = ft_strlen(map[0]);
-	if (len < 4)
-		return (FAIL);
-	if (is_valid_map_rows(map[0], len) == FALSE)
-		return (FAIL);
-	if (is_valid_map_info_chars(&map[0][len - 3]) == FALSE)
-		return (FAIL);
-	return (SUCCESS);
-}
-
-int				ft_get_map_cols(char **map)
+static int	get_map_cols(char **map)
 {
 	int	col;
 
@@ -70,7 +22,7 @@ int				ft_get_map_cols(char **map)
 	return (col);
 }
 
-static int		get_map_rows(char *first_line, int len)
+static int	get_map_rows(char *first_line, int len)
 {
 	int		i;
 	char	*rows;
@@ -88,7 +40,7 @@ static int		get_map_rows(char *first_line, int len)
 	return (map_rows);
 }
 
-t_map_info		*ft_parse_map_info(char **map)
+t_map_info	*ft_parse_map_info(char **map)
 {
 	t_map_info	*map_info;
 	int			len;
@@ -103,7 +55,7 @@ t_map_info		*ft_parse_map_info(char **map)
 		free(map_info);
 		return (NULL);
 	}
-	map_info->cols = ft_get_map_cols(map);
+	map_info->cols = get_map_cols(map);
 	if (map_info->cols < 0)
 	{
 		free(map_info);

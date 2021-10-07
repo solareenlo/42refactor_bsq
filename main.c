@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 19:50:45 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:16:04 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static int	bsq(int fd)
 	content = read_to_eof(fd);
 	if (ft_is_last_char_a_line_break(content) == FALSE)
 		return (free_and_return_fail(content, NULL, NULL));
-	/* map = ft_split(content, (char *)"\n"); */
 	map = ft_split(content, '\n');
 	free(content);
 	if (ft_validate_map_info(map) == FAIL)
