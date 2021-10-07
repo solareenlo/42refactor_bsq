@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 18:56:27 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 19:29:26 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,6 @@ int			g_word_index = 0;
 int			g_start = 0;
 int			g_end = 0;
 int			g_state = 0;
-
-void		ft_free_split(char ***split)
-{
-	size_t	i;
-
-	if (!split || !*split)
-		return ;
-	i = 0;
-	while ((*split)[i])
-	{
-		free((*split)[i]);
-		i++;
-	}
-	free(*split);
-	*split = NULL;
-}
 
 static int	get_wc(char *str, char *charset)
 {
