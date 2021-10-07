@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_info.c                                          :+:      :+:    :+:   */
+/*   ft_map_info.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 22:47:47 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/06 18:17:40 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 17:24:17 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "ft_map_info.h"
 
 static t_bool	is_valid_number_of_line(char *first_line, int len)
 {
@@ -58,6 +58,16 @@ int				ft_validate_map_info(char **map)
 	if (is_valid_map_info_chars(&map[0][len - 3]) == FALSE)
 		return (FAIL);
 	return (SUCCESS);
+}
+
+int				ft_get_map_cols(char **map)
+{
+	int	col;
+
+	if (!map || !map[0] || !map[1] || !map[1][0])
+		return (-1);
+	col = ft_strlen(map[1]);
+	return (col);
 }
 
 static int		get_map_rows(char *first_line, int len)

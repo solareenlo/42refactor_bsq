@@ -6,25 +6,15 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 21:46:00 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 15:18:55 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 17:23:40 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "makesquare.h"
 
 extern int	g_max_size;
 extern int	g_col;
 extern int	g_row;
-
-int			ft_get_map_cols(char **map)
-{
-	int	col;
-
-	if (!map || !map[0] || !map[1] || !map[1][0])
-		return (-1);
-	col = ft_strlen(map[1]);
-	return (col);
-}
 
 void		ft_init_square(t_square *p_square)
 {
