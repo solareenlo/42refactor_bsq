@@ -6,32 +6,18 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 16:29:47 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:32:16 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_split.h"
 
-int				g_word_index = 0;
-int				g_start = 0;
-int				g_end = 0;
-int				g_state = 0;
+int			g_word_index = 0;
+int			g_start = 0;
+int			g_end = 0;
+int			g_state = 0;
 
-static t_bool	is_in_charset(char c, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (charset[i] == c)
-			return (TRUE);
-		i++;
-	}
-	return (FALSE);
-}
-
-static int		get_wc(char *str, char *charset)
+static int	get_wc(char *str, char *charset)
 {
 	int	wc;
 	int	state;
@@ -40,7 +26,7 @@ static int		get_wc(char *str, char *charset)
 	state = OUT;
 	while (*str)
 	{
-		if (is_in_charset(*str, charset))
+		if (ft_strchr(charset, *str))
 			state = OUT;
 		else if (state == OUT)
 		{
@@ -52,7 +38,7 @@ static int		get_wc(char *str, char *charset)
 	return (wc);
 }
 
-static void		update_in_word(int i)
+static void	update_in_word(int i)
 {
 	if (g_state == OUT)
 	{
@@ -64,7 +50,7 @@ static void		update_in_word(int i)
 		g_end = i;
 }
 
-static void		add_last_word(char **res, char *str, int i)
+static void	add_last_word(char **res, char *str, int i)
 {
 	int	j;
 
@@ -84,7 +70,7 @@ static void		add_last_word(char **res, char *str, int i)
 	g_state = 0;
 }
 
-char			**ft_split(char *str, char *charset)
+char		**ft_split(char *str, char *charset)
 {
 	char	**res;
 	int		i;
@@ -96,7 +82,7 @@ char			**ft_split(char *str, char *charset)
 	i = -1;
 	while (str[++i])
 	{
-		if (is_in_charset(str[i], charset))
+		if (ft_strchr(charset, str[i]))
 		{
 			if (g_state == OUT)
 				continue ;
