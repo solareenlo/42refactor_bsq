@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:38:16 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 20:22:51 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 23:08:25 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define SUCCESS 1
 # define FAIL 0
 
-typedef struct	s_map_info
+typedef struct s_map_info
 {
 	int			rows;
 	int			cols;

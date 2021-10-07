@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 20:25:28 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 20:52:40 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 23:08:03 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ static t_bool	is_valid_map_info_chars(char *chars)
 	empty = chars[0];
 	obstacle = chars[1];
 	full = chars[2];
-	if (!ft_is_printable(empty) || !ft_is_printable(obstacle) ||
-		!ft_is_printable(full))
+	if (!ft_is_printable(empty) || !ft_is_printable(obstacle)
+		|| !ft_is_printable(full))
 		return (FALSE);
 	if (empty == obstacle || obstacle == full || full == empty)
 		return (FALSE);
 	return (TRUE);
 }
 
-int				ft_validate_map_info(char **map)
+int	ft_validate_map_info(char **map)
 {
 	int	len;
 

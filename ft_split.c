@@ -6,13 +6,13 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 10:55:41 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 20:48:41 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 23:12:03 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_split.h"
 
-static char		**free_and_return_null(char **s, size_t size)
+static char	**free_and_return_null(char **s, size_t size)
 {
 	if (!s || !*s)
 		return (NULL);
@@ -58,7 +58,7 @@ static size_t	cnt_word(char const *s, char c)
 	return (cnt);
 }
 
-static void		copy_str(char *dst, const char **src, const char c)
+static void	copy_str(char *dst, const char **src, const char c)
 {
 	char	*d;
 
@@ -72,7 +72,7 @@ static void		copy_str(char *dst, const char **src, const char c)
 	*d = '\0';
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**strs;
 	char	**front;
