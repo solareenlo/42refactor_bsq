@@ -5,6 +5,3 @@ bsq_base
 obj
 bsq
 *.dSYM
-
-map_generator.pl
-example_file
