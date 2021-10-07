@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str.h                                           :+:      :+:    :+:   */
+/*   ft_split.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/07 16:08:04 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 16:28:54 by tayamamo         ###   ########.fr       */
+/*   Created: 2021/10/07 16:17:11 by tayamamo          #+#    #+#             */
+/*   Updated: 2021/10/07 16:22:10 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
-#ifndef FT_STR_H
-# define FT_STR_H
+#ifndef FT_SPLIT_H
+# define FT_SPLIT_H
 
+# define IN 1
+# define OUT 0
+
+# include "ft_utility.h"
 # include <stdlib.h>
 
-int		ft_strlen(char *str);
-char	*ft_strdup(char *src);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strchr(const char *s, int c);
+char	**ft_split(char *str, char *charset);
 
 #endif

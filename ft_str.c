@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 17:53:49 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 16:10:02 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:28:41 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -65,4 +65,19 @@ char	*ft_strjoin(char *s1, char *s2)
 		join[i++] = s2[j++];
 	join[i] = '\0';
 	return (join);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	if (!s)
+		return (NULL);
+	if (*s == c)
+		return ((char *)s);
+	else
+	{
+		while (*(s++))
+			if (*s == c)
+				return ((char *)s);
+	}
+	return (NULL);
 }

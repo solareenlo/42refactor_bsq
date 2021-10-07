@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 16:11:43 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:22:04 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_H
 
 # include "ft_atoi.h"
+# include "ft_split.h"
 # include "ft_str.h"
 # include "ft_utility.h"
 # include <fcntl.h>
@@ -23,8 +24,6 @@
 # include <unistd.h>
 
 # define FT_BUFSIZ 32768
-# define IN 1
-# define OUT 0
 # define SUCCESS 1
 # define FAIL 0
 # define FT_ERR_MAP "map error\n"
@@ -54,7 +53,6 @@ int				g_row;
 void			ft_putchar(char c);
 void			ft_putstr(char *str);
 void			ft_puterror(char *str);
-char			**ft_split(char *str, char *charset);
 int				ft_validate_map_info(char **map);
 t_map_info		*ft_parse_map_info(char **map);
 int				ft_validate_map(char **map, t_map_info *info);
