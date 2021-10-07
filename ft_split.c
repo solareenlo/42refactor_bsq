@@ -3,103 +3,98 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 15:59:31 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 19:29:26 by tayamamo         ###   ########.fr       */
+/*   Created: 2021/03/31 10:55:41 by tayamamo          #+#    #+#             */
+/*   Updated: 2021/10/07 20:05:59 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_split.h"
 
-int			g_word_index = 0;
-int			g_start = 0;
-int			g_end = 0;
-int			g_state = 0;
-
-static int	get_wc(char *str, char *charset)
+static char		**free_and_return_null(char **s, size_t size)
 {
-	int	wc;
-	int	state;
-
-	wc = 0;
-	state = OUT;
-	while (*str)
-	{
-		if (ft_strchr(charset, *str))
-			state = OUT;
-		else if (state == OUT)
-		{
-			state = IN;
-			++wc;
-		}
-		++str;
-	}
-	return (wc);
-}
-
-static void	update_in_word(int i)
-{
-	if (g_state == OUT)
-	{
-		g_state = IN;
-		g_start = i;
-		g_end = i;
-	}
-	else
-		g_end = i;
-}
-
-static void	add_last_word(char **res, char *str, int i)
-{
-	int	j;
-
-	if (g_state == IN)
-	{
-		res[g_word_index] = (char *)malloc(sizeof(char) * ((i - g_start) + 1));
-		j = -1;
-		while (g_start <= i)
-			res[g_word_index][++j] = str[g_start++];
-		res[g_word_index][++j] = '\0';
-		g_word_index++;
-	}
-	res[g_word_index] = 0;
-	g_word_index = 0;
-	g_start = 0;
-	g_end = 0;
-	g_state = 0;
-}
-
-char		**ft_split(char *str, char *charset)
-{
-	char	**res;
-	int		i;
-	int		j;
-
-	if (!str || !charset)
+	if (!s || !*s)
 		return (NULL);
-	res = (char **)malloc(sizeof(char *) * (get_wc(str, charset) + 1));
-	if (!res)
+	while (size--)
+		free(*s++);
+	free(s);
+	return (NULL);
+}
+
+static size_t	str_len(char const *s, char c)
+{
+	size_t	len;
+
+	if (!s)
+		return (0);
+	while (*s == c)
+		s++;
+	len = 0;
+	while (*s != c && *s)
+	{
+		s++;
+		len++;
+	}
+	return (len);
+}
+
+static size_t	cnt_word(char const *s, char c)
+{
+	size_t	cnt;
+
+	if (!s)
+		return (0);
+	cnt = 0;
+	while (*s)
+	{
+		while (*s == c)
+			s++;
+		if (*s != c && *s)
+			cnt++;
+		while (*s != c && *s)
+			s++;
+	}
+	return (cnt);
+}
+
+static void		str_cpy(char *dst, const char **src, const char c)
+{
+	char	*d;
+
+	if (!dst || !src || !*src)
+		return ;
+	d = dst;
+	while (**src == c)
+		(*src)++;
+	while (**src != c && **src)
+		*(d++) = *((*src)++);
+	*d = '\0';
+}
+
+char			**ft_split(char const *s, char c)
+{
+	char	**strs;
+	char	**front;
+	size_t	cnt;
+	size_t	i;
+
+	if (!s)
 		return (NULL);
+	strs = (char **)malloc(sizeof(char *) * (cnt_word(s, c) + 1));
+	if (strs == NULL)
+		return (NULL);
+	cnt = cnt_word(s, c);
+	front = strs;
 	i = -1;
-	while (str[++i])
+	while (++i < cnt)
 	{
-		if (ft_strchr(charset, str[i]))
-		{
-			if (g_state == OUT)
-				continue ;
-			g_state = OUT;
-			res[g_word_index] =
-				(char *)malloc(sizeof(char) * ((g_end - g_start) + 1));
-			j = -1;
-			while (g_start <= g_end)
-				res[g_word_index][++j] = str[g_start++];
-			res[g_word_index][++j] = '\0';
-			g_word_index++;
-		}
-		else
-			update_in_word(i);
+		*strs = (char *)malloc(sizeof(char) * (str_len(s, c) + 1));
+		if (*strs == NULL)
+			return (free_and_return_null(strs, i));
+		str_cpy(*strs, &s, c);
+		strs++;
 	}
-	add_last_word(res, str, i);
-	return (res);
+	*strs = NULL;
+	return (front);
 }

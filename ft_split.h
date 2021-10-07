@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:17:11 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 19:27:11 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 19:52:22 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "ft_utility.h"
 # include <stdlib.h>
 
-char	**ft_split(char *str, char *charset);
+// char	**ft_split(char *str, char *charset);
+char	**ft_split(char const *s, char c);
 
 #endif
