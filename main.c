@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 20:38:21 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 23:12:25 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*read_to_eof(int fd)
 	return (content);
 }
 
-t_bool		free_and_return_fail(char *str, char **map, t_map_info *map_info)
+t_bool	free_and_return_fail(char *str, char **map, t_map_info *map_info)
 {
 	free(str);
 	ft_free_split(&map);
@@ -69,7 +69,7 @@ static int	bsq(int fd)
 	return (SUCCESS);
 }
 
-int			main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	int	i;
 	int	ifd;
