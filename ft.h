@@ -6,7 +6,7 @@
 /*   By: louisnop <louisnop@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 10:30:46 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 19:28:33 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/07 19:44:11 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@
 # include "ft_validate_map.h"
 # include "makesquare.h"
 # include <fcntl.h>
-# include <libgen.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 # define FT_BUFSIZ 32768
 # define FT_ERR_MAP "map error\n"
