@@ -6,7 +6,7 @@
 /*   By: tayamamo <tayamamo@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 17:53:49 by tayamamo          #+#    #+#             */
-/*   Updated: 2021/10/07 23:09:57 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:07:35 by tayamamo         ###   ########.fr       */
 /*   Copyright 2021                                                           */
 /* ************************************************************************** */
 
@@ -45,24 +45,29 @@ char	*ft_strdup(char *src)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*join;
-	int		i;
-	int		j;
-	int		size;
+	char		*join;
+	int			i;
+	int			j;
+	const int	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	join = (char *)malloc(sizeof(char) * size);
+	join = (char *)malloc(sizeof(char) * len);
 	if (join == NULL)
 		return (NULL);
 	i = 0;
-	while (s1[i])
+	if (s1)
 	{
-		join[i] = s1[i];
-		i++;
+		while (s1[i])
+		{
+			join[i] = s1[i];
+			i++;
+		}
 	}
 	j = 0;
-	while (s2[j])
-		join[i++] = s2[j++];
+	if (s2)
+	{
+		while (s2[j])
+			join[i++] = s2[j++];
+	}
 	join[i] = '\0';
 	return (join);
 }

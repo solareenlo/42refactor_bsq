@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:44:48 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/07 18:53:08 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:01:36 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,8 @@ t_bool	ft_isdigit(char c)
 
 t_bool	ft_is_last_char_a_line_break(char *line)
 {
-	int	len;
+	const int	len = ft_strlen(line);
 
-	if (!line)
-		return (FALSE);
-	len = ft_strlen(line);
 	if (len < 1)
 		return (FALSE);
 	if (line[len - 1] != '\n')
