@@ -6,7 +6,7 @@
 /*   By: louisnop <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 02:58:38 by louisnop          #+#    #+#             */
-/*   Updated: 2021/10/08 08:29:54 by tayamamo         ###   ########.fr       */
+/*   Updated: 2021/10/08 09:51:08 by tayamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char	*read_to_eof(int fd)
 	return (content);
 }
 
-t_bool	free_and_return_fail(char *str, char **map, t_map_info *map_info)
+t_bool		free_and_return_fail(char *str, char **map, t_map_info *map_info)
 {
 	free(str);
 	ft_free_split(&map);
@@ -69,10 +69,10 @@ static int	bsq(int fd)
 	return (SUCCESS);
 }
 
-int	main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	int	i;
-	int	ifd;
+	int	fd;
 
 	if (argc < 2)
 	{
@@ -83,8 +83,8 @@ int	main(int argc, char *argv[])
 	i = 0;
 	while (++i < argc)
 	{
-		ifd = open(argv[i], O_RDONLY);
-		if (bsq(ifd) == FAIL)
+		fd = open(argv[i], O_RDONLY);
+		if (bsq(fd) == FAIL)
 			ft_puterror((char *)FT_ERR_MAP);
 		if (i + 1 != argc)
 			ft_putstr((char *)"\n");
